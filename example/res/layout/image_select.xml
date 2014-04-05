@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2f6c88"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/login_email"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/image_icon"
+        android:layout_gravity="center"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginTop="45dp"
+        android:background="#629fbe"
+        android:hint="email"
+        android:paddingLeft="7dp"
+        android:singleLine="true"
+        android:textColor="#47819e" />
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/login_email"
+        android:layout_gravity="center"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginTop="26dp"
+        android:background="#629fbe"
+        android:hint="password"
+        android:paddingLeft="7dp"
+        android:password="true"
+        android:singleLine="true"
+        android:textColor="#47819e" />
+
+    <Button
+        android:id="@+id/forget_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/login_password"
+        android:layout_marginRight="26dp"
+        android:layout_marginTop="10dp"
+        android:background="#0000"
+        android:text="@string/forget_password"
+        android:textColor="#5cb2de"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/enterBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/forget_password"
+        android:layout_gravity="center"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/login_btn_background"
+        android:onClick="loginRequest"
+        android:text="@string/login"
+        android:textSize="20sp" />
+
+</RelativeLayout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#252c35" >
+
+    <RelativeLayout
+        android:id="@+id/company_logo"
+        android:layout_width="match_parent"
+        android:layout_height="50px"
+        android:layout_alignParentTop="true" >
+
+        <ImageView
+            android:id="@+id/company_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/image_foxconn"
+            android:scaleType="matrix" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/user_info"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/company_logo"
+        android:clickable="true"
+        android:background="@drawable/view_border" >
+
+        <ImageView
+            android:id="@+id/staff_photo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/boy"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/photo_circle" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/staff_photo"
+            android:paddingLeft="10dp" >
+
+            <TextView
+                android:id="@+id/staff_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/job_position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/staff_name"
+                android:paddingTop="3dp"
+                android:textColor="#6c7683"
+                android:textSize="13dp" />
+
+            <TextView
+                android:id="@+id/job_department"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/job_position"
+                android:layout_alignParentRight="true"
+                android:paddingRight="10dp"
+                android:textColor="#6c7683"
+                android:textSize="13dp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <com.bestapp.yikuair.utils.ImgButton
+        android:id="@+id/set_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_setting_background"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/set_btn"
+        android:layout_below="@id/user_info"
+        android:layout_gravity="center"
+        android:background="#252c35"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/m_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="#00000000"
+            android:divider="#21272f"
+            android:dividerHeight="1dp"
+            android:listSelector="@drawable/item_selector"
+            android:scrollbars="none" />
+    </LinearLayout>
+
+</RelativeLayout>

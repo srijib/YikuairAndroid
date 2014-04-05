@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="red">#900</color>
+    <color name="green">#090</color>
+    <color name="blue">#009</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="light_blue">#99CCFF</color>
+    <color name="grey">#999</color>
+    <color name="orange">#FF6666</color>
+    <color name="menu_item1_normal">#252c35</color>
+    <color name="menu_item1_tv_normal">#89939f</color>
+    <color name="transparent">#00000000</color>
+    <color name="light">#cccc99</color>
+    <color name="schedule_font_color">#A0A0A0</color>
+    <color name="schedule_hint_color">#D5D5D5</color>
+    <color name="schedule_input_color">#565656</color>
+    <color name="info_color">#ABABAB</color>
+    <color name="name_color">#303030</color>
+    <color name="divider">#F1F1F1</color>
+    <color name="note_phone">#919191</color>
+    <color name="transparent_background">#7f000000</color>
+    <color name="down_bg">#e9e9e9</color>
+    <color name="normal_bg">#ffffff</color>
+
+</resources>

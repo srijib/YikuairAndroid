@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/ima_top_bg"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/sub_back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="72"
+            android:background="@drawable/title_btn"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="onBack"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:scaleType="centerInside"
+                android:src="@drawable/ico_back"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="324"
+            android:gravity="center"
+            android:text="@string/pair_list"
+            android:textColor="@android:color/white"
+            android:textSize="18dp" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="80"
+            android:background="@android:color/transparent" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="687"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <ListView
+            android:id="@+id/pair_friend_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#f8f6f6"
+            android:divider="@color/divider"
+            android:dividerHeight="1dp"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/friend_list_null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ima_friend_list_blank"
+            tools:ignore="ContentDescription" />
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f6f6f6" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" >
+
+        <ImageView
+            android:id="@+id/photo_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ima_friend_photo_big"
+            android:clickable="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/ima_friend_photoframe_edit"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/show_head"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/photo_edit"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/heart_clip"
+            tools:ignore="ContentDescription" />
+
+        <RelativeLayout
+            android:id="@+id/button_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/show_head"
+            android:orientation="horizontal" >
+
+            <FrameLayout
+                android:id="@+id/head_pop_friend"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="bottom" />
+
+            <RelativeLayout
+                android:id="@+id/test"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_alignLeft="@id/head_pop_friend"
+                android:layout_alignRight="@id/head_pop_friend"
+                android:layout_below="@id/head_pop_friend"
+                android:background="@drawable/ima_friend_photoframe_inf_middle"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/nick_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:maxEms="6"
+                    android:singleLine="true"
+                    android:text="周围没有合适朋友啦"
+                    android:textColor="#5e5e5e"
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/pop_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/nick_name"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:text="当前"
+                    android:textColor="#5e5e5e"
+                    android:textSize="8dp" />
+
+                <TextView
+                    android:id="@+id/huo_yue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/nick_name"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_toLeftOf="@id/pop_time"
+                    android:text="活跃"
+                    android:textColor="#919191"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:id="@+id/juli"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/nick_name"
+                    android:layout_marginLeft="2dp"
+                    android:layout_toLeftOf="@id/huo_yue"
+                    android:text="附近"
+                    android:textColor="#5e5e5e"
+                    android:textSize="8dp" />
+
+                <ImageView
+                    android:id="@+id/ima_pop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/juli"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ico_friend_location"
+                    tools:ignore="NestedWeights,ContentDescription" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/head_pop_friend"
+                android:layout_alignRight="@id/head_pop_friend"
+                android:layout_below="@id/test"
+                android:scaleType="fitXY"
+                android:src="@drawable/ima_friend_photoframe_inf_down"
+                tools:ignore="NestedWeights,ContentDescription" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/friend_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_below="@id/button_show"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="38"
+                android:background="@android:color/transparent"
+                tools:ignore="NestedWeights" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="68"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="53"
+                    android:background="@android:color/transparent" />
+
+                <Button
+                    android:id="@+id/not_like"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="168"
+                    android:background="@drawable/bt_friend_grey_bg"
+                    android:text="@string/not_like"
+                    android:textColor="#777777"
+                    android:textSize="19sp" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="53"
+                    android:background="@android:color/transparent" />
+
+                <Button
+                    android:id="@+id/like"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="168"
+                    android:background="@drawable/bt_pink_bg"
+                    android:text="@string/like"
+                    android:textColor="@android:color/white"
+                    android:textSize="19sp" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="53"
+                    android:background="@android:color/transparent" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="38"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/ima_top_bg"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/title_btn"
+            android:gravity="center"
+            android:onClick="openMainMenu"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:src="@drawable/ico_menu"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="330"
+            android:gravity="center"
+            android:text="@string/account"
+            android:textColor="@android:color/white"
+            android:textSize="18dp" />
+
+        <ImageButton
+            android:id="@+id/sub_button"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/title_btn"
+            android:src="@drawable/ico_cross" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/offcical_content"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="688"
+        android:background="@drawable/repeat_bg"
+        android:orientation="horizontal" >
+
+        <ListView
+            android:id="@+id/accout_info_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/divider"
+            android:dividerHeight="1dp" />
+
+        <ImageView
+            android:id="@+id/no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="45dp"
+            android:src="@drawable/ima_blanklist_bg_rss" />
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/chatting"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#fcfcfc" >
+
+    <RelativeLayout
+        android:id="@+id/rl_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/title_bar"
+        android:gravity="center_vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rl_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:onClick="chatBack" >
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/ico_back" />
+
+            <TextView
+                android:id="@+id/tv_left_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/btn_back"
+                android:text="@string/message"
+                android:textColor="#ffffff"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/chat_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="#ffffff"
+            android:textSize="18dp" />
+
+        <ImageButton
+            android:id="@+id/ib_open_menu"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:background="@drawable/title_btn"
+            android:src="@drawable/ico_open" />
+
+        <ImageButton
+            android:id="@+id/ib_open_group"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/title_btn"
+            android:onClick="openTaskMember"
+            android:src="@drawable/nav_multi_persons"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/top_gridView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_layout"
+        android:background="#EDEDED"
+        android:cacheColorHint="#00000000"
+        android:listSelector="#00000000"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/chat_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <LinearLayout
+            android:id="@+id/ll_anniu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_background"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <FrameLayout
+                android:id="@+id/rl"
+                android:layout_width="40dp"
+                android:layout_height="fill_parent"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@null"
+                    android:minWidth="0.0dip"
+                    android:paddingBottom="4.0dip"
+                    android:paddingTop="5.0dip"
+                    android:scaleType="fitStart"
+                    android:src="@drawable/ima_query_triangle" />
+
+                <Button
+                    android:id="@+id/menu_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@android:color/transparent"
+                    android:minWidth="0.0dip"
+                    android:onClick="show"
+                    android:paddingBottom="4.0dip"
+                    android:paddingTop="5.0dip"
+                    android:text="查看"
+                    android:textColor="#999999" />
+
+                <ImageView
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ima_query_line2" />
+            </FrameLayout>
+
+            <ImageButton
+                android:id="@+id/chatting_voice_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:background="@null"
+                android:minWidth="0.0dip"
+                android:paddingBottom="4.0dip"
+                android:paddingTop="5.0dip"
+                android:src="@drawable/message_sound"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/chatting_keyboard_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:background="@null"
+                android:minWidth="0.0dip"
+                android:paddingBottom="4.0dip"
+                android:paddingTop="5.0dip"
+                android:src="@drawable/message_keyboard"
+                android:visibility="gone" />
+
+            <ImageButton
+                android:id="@+id/chatting_plus_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:background="@null"
+                android:minWidth="0.0dip"
+                android:paddingBottom="4.0dip"
+                android:paddingTop="5.0dip"
+                android:src="@drawable/message_plus"
+                android:visibility="visible" />
+
+            <RelativeLayout
+                android:id="@+id/ll_fasong"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible" >
+
+                <Button
+                    android:id="@+id/btn_send"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/send_message"
+                    android:textColor="#999999"
+                    android:textSize="13dp" />
+
+                <EditText
+                    android:id="@+id/et_sendmessage"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toLeftOf="@id/btn_send"
+                    android:background="@drawable/login_edit_normal"
+                    android:maxLines="4"
+                    android:textSize="15dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ll_yuyin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" >
+
+                <Button
+                    android:id="@+id/btn_yuyin"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/press_and_speak"
+                    android:textColor="#999999"
+                    android:textSize="15dp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <GridView
+            android:id="@+id/message_gridView"
+            android:layout_width="fill_parent"
+            android:layout_height="180dp"
+            android:layout_below="@+id/ll_anniu"
+            android:background="#EDEDED"
+            android:cacheColorHint="#00000000"
+            android:listSelector="#00000000"
+            android:numColumns="4"
+            android:paddingTop="10dp"
+            android:scrollbars="none"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/chat_bottom"
+        android:layout_below="@id/top_gridView"
+        android:background="#fcfcfc"
+        android:orientation="vertical" >
+
+        <com.bestapp.yikuair.utils.PullToRefreshListView
+            android:id="@+id/pull_refresh_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="#00000000"
+            android:divider="@null"
+            android:dividerHeight="10dip"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:listSelector="#00000000" />
+    </RelativeLayout>
+
+</RelativeLayout>

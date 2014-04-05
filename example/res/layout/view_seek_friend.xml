@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="360"
+        android:gravity="center_horizontal|bottom"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:id="@+id/waitting_seek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:clickable="true"
+            tools:ignore="UselessParent" >
+
+            <ImageView
+                android:id="@+id/photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ima_friend_photo_big"
+                android:clickable="false"
+                android:scaleType="fitXY"
+                android:src="@drawable/ima_friend_roundcorner"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/seek_friend_waitting"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:scaleType="fitXY"
+                android:src="@drawable/ima_friend_roundcircle"
+                tools:ignore="ContentDescription" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100"
+        android:background="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/find_notify"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="236"
+        android:gravity="center"
+        android:text="@string/seek"
+        android:textColor="@color/info_color"
+        android:textSize="14sp" />
+
+</LinearLayout>

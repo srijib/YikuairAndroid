@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fcfcfc"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/white_board_title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/title_bar"
+        android:gravity="left"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/white_board_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:padding="10dp"
+            android:src="@drawable/ico_back"
+            android:background="@color/transparent"
+            android:contentDescription="@+string/white_board_back" />
+
+        <ImageButton
+            android:id="@+id/white_board_backward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ico_white_board_cancel"
+            android:contentDescription="@+string/white_board_backward" />
+
+        <ImageButton
+            android:id="@+id/white_board_forward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ico_redo"
+            android:contentDescription="@+string/white_board_forward" />
+
+        <ImageButton
+            android:id="@+id/white_board_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ico_wb_delete"
+            android:contentDescription="@+string/white_board_delete" />
+
+        <LinearLayout
+            android:id="@+id/white_board_padding"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" />
+
+        <ImageButton
+            android:id="@+id/white_board_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="5dp"
+            android:padding="10dp"
+            android:src="@drawable/ico_send"
+            android:background="@color/transparent"
+            android:contentDescription="@+string/white_baord_send" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/tuya_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <ImageView
+            android:id="@+id/imageview_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+
+        <com.bestapp.yikuair.customview.SketchView
+            android:id="@+id/white_board_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/ScrollView01"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#c5d0d5"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dip"
+                android:layout_marginTop="7.33dip"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/imageviewleft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="6.67dip"
+                    android:background="@drawable/tuya_toleft" />
+
+                <ImageView
+                    android:id="@+id/imageviewright"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="6.67dip"
+                    android:background="@drawable/tuya_toright" />
+
+                <include layout="@layout/tuya_colourlayout" />
+
+                <ScrollView
+                    android:id="@+id/scrollviewbig"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="19.33dip"
+                    android:layout_marginRight="19.33dip"
+                    android:layout_marginTop="2.67dip"
+                    android:fadingEdge="none"
+                    android:scrollbars="none"
+                    android:visibility="gone" >
+
+                    <com.bestapp.yikuair.customview.MyHorizontalScrollView
+                        android:id="@+id/whiteboard_sizebutton_scrollview"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none" >
+
+                        <LinearLayout
+                            android:id="@+id/LinearLayout02"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="7.33dip"
+                                android:orientation="horizontal" >
+
+                                <Button
+                                    android:id="@+id/sizebutton01"
+                                    android:layout_width="40dip"
+                                    android:layout_height="40dip"
+                                    android:background="@drawable/icon" />
+
+                                <LinearLayout
+                                    android:layout_width="40dip"
+                                    android:layout_height="40dip"
+                                    android:orientation="horizontal" >
+
+                                    <ImageView
+                                        android:layout_width="33.33dip"
+                                        android:layout_height="33.33dip"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="3.33dip"
+                                        android:background="@drawable/tuya_brushsizebg" />
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="7.33dip"
+                                android:orientation="horizontal" >
+
+                                <Button
+                                    android:id="@+id/sizebutton02"
+                                    android:layout_width="40dip"
+                                    android:layout_height="40dip"
+                                    android:background="#aaaa00" />
+
+                                <LinearLayout
+                                    android:layout_width="40dip"
+                                    android:layout_height="40dip"
+                                    android:orientation="horizontal" >
+
+                                    <ImageView
+                                        android:layout_width="26dip"
+                                        android:layout_height="26dip"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="6.67dip"
+                                        android:background="@drawable/tuya_brushsizebg" />
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="7.33dip"
+                                android:orientation="horizontal" >
+
+                                <Button
+                                    android:id="@+id/sizebutton03"
+                                    android:layout_width="40dip"
+                                    android:layout_height="40dip"
+                                    android:background="@null" />
+
+                                <LinearLayout
+                                    android:layout_width="40dip"
+                                    android:layout_height="40dip"
+                                    android:orientation="horizontal" >
+
+                                    <ImageView
+                                        android:layout_width="20dip"
+                                        android:layout_height="20dip"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="10dip"
+                                        android:background="@drawable/tuya_brushsizebg" />
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="6dip"
+                                android:orientation="horizontal" >
+
+                                <Button
+                                    android:id="@+id/sizebutton04"
+                                    android:layout_width="40dip"
+                                    android:layout_height="40dip"
+                                    android:background="@null" />
+
+                                <LinearLayout
+                                    android:layout_width="40dip"
+                                    android:layout_height="40dip"
+                                    android:orientation="horizontal" >
+
+                                    <ImageView
+                                        android:layout_width="13.33dip"
+                                        android:layout_height="13.33dip"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="13.33dip"
+                                        android:background="@drawable/tuya_brushsizebg" />
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="6dip"
+                                android:orientation="horizontal" >
+
+                                <Button
+                                    android:id="@+id/sizebutton05"
+                                    android:layout_width="40dip"
+                                    android:layout_height="40dip"
+                                    android:background="@null" />
+
+                                <LinearLayout
+                                    android:layout_width="40dip"
+                                    android:layout_height="40dip"
+                                    android:orientation="horizontal" >
+
+                                    <ImageView
+                                        android:layout_width="6.67dip"
+                                        android:layout_height="6.67dip"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="16.67dip"
+                                        android:background="@drawable/tuya_brushsizebg" />
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5.33dip"
+                                android:orientation="horizontal" >
+
+                                <Button
+                                    android:id="@+id/sizebutton06"
+                                    android:layout_width="40dip"
+                                    android:layout_height="40dip"
+                                    android:background="@null" />
+
+                                <LinearLayout
+                                    android:layout_width="40dip"
+                                    android:layout_height="40dip"
+                                    android:orientation="horizontal" >
+
+                                    <ImageView
+                                        android:layout_width="3.33dip"
+                                        android:layout_height="3.33dip"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginLeft="18.67dip"
+                                        android:background="@drawable/tuya_brushsizebg" />
+                                </LinearLayout>
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </com.bestapp.yikuair.customview.MyHorizontalScrollView>
+                </ScrollView>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/white_board_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/bottom_background"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/colourtag"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bt_tab_bg"
+            android:contentDescription="@+string/white_board_pencolor"
+            android:src="@drawable/ico_color" />
+
+        <ImageButton
+            android:id="@+id/white_board_pensize"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bt_tab_bg"
+            android:contentDescription="@+string/white_board_pensize"
+            android:src="@drawable/ico_pen" />
+
+        <ImageButton
+            android:id="@+id/bigtag"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bt_tab_bg"
+            android:contentDescription="@+string/white_board_shetch"
+            android:src="@drawable/ico_size" />
+
+        <ImageButton
+            android:id="@+id/white_baord_transparency"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bt_tab_bg"
+            android:contentDescription="@+string/white_board_transparency"
+            android:src="@drawable/ico_alpha" />
+    </LinearLayout>
+
+</LinearLayout>

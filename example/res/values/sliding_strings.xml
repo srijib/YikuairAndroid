@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">一块儿</string>
+    <string name="forget_password">忘记密码？</string>
+    <string name="login">登陆</string>
+    <string name="login_email">员工ID</string>
+    <string name="nick_name">昵 称</string>
+    <string name="login_start">开始体验</string>
+    <string name="welcome_news">欢迎您使用富士康企业移动平台,这里可以接收到廊坊园区每天的最新动态!</string>
+    <string name="user_feedback_first_message">一块是大家的平台，欢迎多提宝贵意见!</string>
+    <string name="login_password">密码</string>
+    <string name="canceled">已取消</string>
+    <string name="morning">上午</string>
+    <string name="gl_wait">请稍等</string>
+    <string name="notice">提示</string>
+    <string name="edit">编辑</string>
+    <string name="finish">完成</string>
+    <string name="set_signature_null_error">内容不能为空</string>
+    <string name="set_signature_success">保存成功</string>
+    <string name="set_successful">设置成功</string>
+    <string name="set_password_same_error">新密码与旧密码不可相同</string>
+    <string name="old_password_error">旧密码错误</string>
+    <string name="set_password_null_error">密码不能为空</string>
+    <string name="set_password_dismatch">两次输入的密码不一致</string>
+    <string name="change_mobile_dismatch">两次输入的手机号不一致</string>
+    <string name="afternoon">下午</string>
+    <string name="checked">已确认</string>
+    <string name="network_error">网络异常，请稍后再试</string>
+    <string name="schedule_begintime_error">开始时间不能早于当前日期</string>
+    <string name="schedule_endtime_error">结束时间不能早于开始时间</string>
+    <string name="schedule_task_item">待办工作</string>
+    <string name="schedule_default_item">当天没有待办日程</string>
+    <string name="schedule_default_task">没有待办工作</string>
+    <string name="schedule_error">请勿重复建立日程</string>
+    <string name="schedule_member_error">参与人员不能为空</string>
+    <string name="chat_member_error">成员不能为空,请重新选择</string>
+    <string name="cancel_shield">取消屏蔽</string>
+    <string name="member_number">员工号</string>
+    <string name="title_error">请输入标题</string>
+    <string name="wait_check">等待确认</string>
+    <string name="find_error">查找失败，请稍后再试</string>
+    <string name="no_member_error">查找无该用户</string>
+    <string name="member_null_error">员工号不能为空</string>
+    <string name="change_mobile">修改手机号</string>
+    <string name="set_password_title">设置密码</string>
+    <string name="individual_signature">个性签名</string>
+    <string name="signature">签名</string>
+    <string name="individual_photo">头像</string>
+    <string name="prompt_set_head">请设置头像</string>
+    <string name="quit_group">您已被移除本群</string>
+    <string name="login_null_error">用户名或密码不能为空</string>
+    <string name="set_mobile_error">手机号码长度不得多于11位</string>
+    <string name="service_error">服务器异常，请稍后再试</string>
+    <string name="signature_me_default">我什么都没有留下</string>
+    <string name="signature_man_default">他什么都没有留下</string>
+    <string name="signature_woman_default">她什么都没有留下</string>
+    <string name="participant_error">请添加参与人</string>
+    <string name="back_press_hint">再按一次退出</string>
+    <string name="login_safe_exception">该用户已经通过其他设备登陆</string>
+    <string name="login_pram_exception">用户名或密码错误，请重新再试</string>
+    <string name="modify_password_error">密码修改失败，请重新再试</string>
+    <string name="network_unavailable">网路不可用，请设置网络</string>
+    <string name="create_group_error">创建群组失败，请稍后再试</string>
+    <string name="sdcard_error">SD卡存储空间不足，将无法使用图片音频等资源</string>
+    <string name="delete">删除</string>
+    <string name="add_mem">添加通讯录</string>
+    <string name="dont_like">不喜欢</string>
+    <string name="find_member">查找</string>
+    <string name="do_like">喜欢</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="before_day">天前</string>
+    <string name="before_week">周前</string>
+    <string name="before_month">月前</string>
+    <string name="before_year">年前</string>
+    <string name="after_day">天后</string>
+    <string name="after_month">月后</string>
+    <string name="after_week">周后</string>
+    <string name="after_year">年后</string>
+    <string name="picture">[图片]</string>
+    <string name="voice">[语音]</string>
+    <string name="message_item_task">[任务]</string>
+    <string name="message_item_meeting">[会议]</string>
+    <string name="message_item_other">[其他]</string>
+    <string name="schedule_title_hint">每周例会</string>
+    <string name="schedule_ok">完成</string>
+    <string name="next_step">下一步</string>
+    <string name="skip">跳过</string>
+    <string name="set_password_hint">为了账号安全，首次登陆需要修改密码</string>
+    <string name="schedule_Cancel">取消</string>
+    <string name="message">消息</string>
+    <string name="address_list_search">Cancel</string>
+    <string name="address_list_search">搜索</string>
+    <string name="personal_info">个人资料</string>
+    <string name="personal_profile">完善个人资料</string>
+    <string name="individual">本人</string>
+    <string name="group">群组</string>
+    <string name="click_check">点击确认</string>
+    <string name="personal_signature">个性签名：</string>
+    <string name="call_out">呼叫</string>
+    <string name="staff_duty">资位：</string>
+    <string name="send_msg">发信息</string>
+    <string name="dial_error">抱歉，您未存该用户号码</string>
+    <string name="group_chat">群聊</string>
+    <string name="shield_colleague">屏蔽该同事</string>
+    <string name="add_file">添加文件</string>
+    <string name="take_photo">拍照</string>
+    <string name="photo">照片</string>
+    <string name="me">我</string>
+    <string name="sent">送达</string>
+    <string name="waiting">等待</string>
+    <string name="readed">已读</string>
+    <string name="member">成员</string>
+    <string name="groupname">群名称 :</string>
+    <string name="add_to_maillist">添加到通讯录</string>
+    <string name="remove_from_maillist">从通讯录移除</string>
+    <string name="quit_and_del">退出此群组</string>
+    <string name="nickname">我的群昵称</string>
+    <string name="change_mobile_num">请输入新手机号</string>
+    <string name="change_mobile_num_again">请再次输入</string>
+    <string name="set_password">新密码</string>
+    <string name="set_password_again">重输密码</string>
+    <string name="old_password">旧密码</string>
+    <string name="input_memberId">输入员工号</string>
+    <string name="schedule_meeting_title">会议名称</string>
+    <string name="schedule_title">任务名称</string>
+    <string name="schedule_other_title">其他名称</string>
+    <string name="schedule_chatTitle">标题：</string>
+    <string name="schedule_beginTime">时间：</string>
+    <string name="schedule_begintime">开始</string>
+    <string name="schedule_dialog_begintime">开始时间</string>
+    <string name="schedule_dialog_begintime_hint">尚未指定开始时间</string>
+    <string name="schedule_dialog_address_hint">尚未指定地点</string>
+    <string name="schedule_chat_begintime">开始：</string>
+    <string name="schedule_endtime">截止时间</string>
+    <string name="schedule_endTime">截止</string>
+    <string name="schedule_chat_endtime">截止：</string>
+    <string name="schedule_meeting_address">会议地点</string>
+    <string name="schedule_other_address">补充信息</string>
+    <string name="schedule_address">地点：</string>
+    <string name="schedule_add_member">参与成员</string>
+    <string name="location">位置</string>
+    <string name="video">视频</string>
+    <string name="task">任务</string>
+    <string name="meeting">会议</string>
+    <string name="other">其他</string>
+    <string name="chat_schedule">待办</string>
+    <string name="white_board">白板</string>
+    <string name="all_staff">全部同事</string>
+    <string name="select_member">选择联系人</string>
+    <string name="btn_set">设置</string>
+    <string name="press_and_speak">按住  说话</string>
+    <string name="week">星期</string>
+    <string name="month">月</string>
+    <string name="one">一</string>
+    <string name="two">二</string>
+    <string name="three">三</string>
+    <string name="four">四</string>
+    <string name="five">五</string>
+    <string name="six">六</string>
+    <string name="seven">日</string>
+    <string name="today">今天</string>
+    <string name="Monday">周一</string>
+    <string name="Tuesday">周二</string>
+    <string name="Wednesday">周三</string>
+    <string name="Thursday">周四</string>
+    <string name="Friday">周五</string>
+    <string name="Saturday">周六</string>
+    <string name="Sunday">周日</string>
+    <string name="btn_add">确定</string>
+    <string name="btn_back">返回</string>
+    <string name="menu_phone">电话</string>
+    <string name="menu_data">ta的资料</string>
+    <string name="menu_shield">屏蔽</string>
+    <string name="menu_invite">邀请</string>
+    <string name="save">保存</string>
+    <string name="cancel">取消</string>
+    <string name="send_message">发送</string>
+    <string name="user_feedback">用户反馈 </string>
+    <string name="company_news">公司动态 </string>
+    <string name="company_agenda">待办日程</string>
+    <string name="company_message">消息</string>
+    <string name="company_official_account">官方账号 </string>
+    <string name="company_address_list">通讯录</string>
+    <string name="company_app">应用</string>
+    <string name="special_deals">今日特价</string>
+    <string name="add_member">添加同事</string>
+    <string name="company_friends">速配交友</string>
+    <string name="company_service">周边服务</string>
+    <string name="game_recommend">游戏推荐</string>
+    <string name="properties">SlidingMenu Properties</string>
+    <string name="general">General</string>
+    <string name="viewpager">ViewPager</string>
+    <string name="attach">Attach</string>
+    <string name="title_bar">Title Bar Options</string>
+    <string name="title_bar_slide">Sliding Title Bar</string>
+    <string name="title_bar_content">Sliding Content Only</string>
+    <string name="animations">Custom Animations</string>
+    <string name="anim_zoom">Zoom</string>
+    <string name="anim_scale">Scale</string>
+    <string name="anim_fold">Fold</string>
+    <string name="anim_slide">Slide Up</string>
+    <string name="changing_fragments">Changing Fragments</string>
+    <string name="responsive_ui">Responsive UI</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
+    <string name="left_and_right">Left and Right</string>
+    <string name="github">GitHub</string>
+    <string name="github_label">SlidingMenu on GitHub</string>
+    <string name="what_is_this">What is this?</string>
+    <string name="responsive_explanation">This is an example of a UI that responds well to device type. On phones, the menu will be placed inside a SlidingMenu, while on tablets the menu will be exposed alongside the content because we have enough room to always show it.</string>
+    <string name="about">About</string>
+    <string name="licenses">Licenses</string>
+    <string name="contact">Contact</string>
+    <string name="about_msg">&lt;b>SlidingMenu&lt;/b> is an Open Source Android library 
+        that allows developers to easily create applications with sliding menus like those 
+        made popular in the Google+, YouTube, and Facebook applications. 
+        You can find it on GitHub by clicking the little octocat icon in the ActionBar. 
+        Feel free to use it all you want in your Android apps provided 
+        that you cite this project and include the license in your app.
+        &lt;br>&lt;br>
+		SlidingMenu is currently used in some incredibly popular Android 
+		apps such as Zappos, Plume, VLC for Android, and The Verge. 
+		If you are using SlidingMenu in your app and would like to be 
+		listed here, please let me know via Twitter (@slidingmenu)!</string>
+    <string name="apache_license">&lt;b>SlidingMenu &lt;/b>&lt;br>
+        \u00A9 2012 Jeremy Feinstein&lt;br>
+        SlidingMenu is licensed under the Apache License Version 2.0.
+        &lt;br>&lt;br>
+        &lt;b>ActionBarSherlock &lt;/b>&lt;br>
+        \u00A9 2012 Jake Wharton&lt;br>
+        ActionBarSherlock is licensed under the Apache License Version 2.0.
+        &lt;br>&lt;br>
+		&lt;b>The Apache License Version 2.0&lt;/b>&lt;br>
+		You may obtain a copy of the License at&lt;br>
+		&lt;center>&lt;a href=\'http://www.apache.org/licenses/LICENSE-2.0\'>
+				"http://www.apache.org/licenses/LICENSE-2.0&lt;/a>&lt;/center>&lt;br>
+		Unless required by applicable law or agreed to in writing, 
+		software distributed under the License is distributed on an 
+		\'AS IS\' BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, 
+		either express or implied. See the License for the specific 
+		language governing permissions and limitations under the License.</string>
+    <string name="no_email">Sorry, I couldn\'t find any e-mail apps on your phone</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="account">官方帐号</string>
+    <string name="head_push">个人设置信息</string>
+    <string name="skip">跳过</string>
+    <string name="account_info">帐号资料</string>
+    <string name="subscription">订阅</string>
+    <string name="after_success_subscription">订阅成功</string>
+    <string name="after_cancel_subscription">取消订阅后，将不再接收“ta”的消息</string>
+    <string name="cancel_subscription">取消订阅</string>
+    <string name="show_info">查看消息</string>
+    <string name="history_info">历史消息</string>
+    <string name="login">开始体验</string>
+    <string name="finish">完成</string>
+    <string name="title_activity_sub">SubActivity</string>
+    <string name="seek_friend">查看所有</string>
+    <string name="seek_friend_m">只看男生</string>
+    <string name="seek_friend_f">只看女生</string>
+    <string name="seek">正在寻找附近的用户...</string>
+    <string name="title_activity_speed_data">SpeedDataActivity</string>
+    <string name="title_activity_head">HeadActivity</string>
+    <string name="title_activity_speed_friend">SpeedFriendActivity</string>
+    <string name="take_photo">拍照</string>
+    <string name="choose_pic">选择图片</string>
+    <string name="cancel">取消</string>
+    <string name="start">选择图片</string>
+    <string name="note_phone">N年前，我长的和他一模一样</string>
+    <string name="title_activity_pair_friend">PairFriendActivity</string>
+    <string name="pair_list">配对列表</string>
+    <string name="pair_success">他也喜欢你，速配成功！</string>
+    <string name="chat">聊一聊</string>
+    <string name="continue_bt">继续玩</string>
+    <string name="not_like">不喜欢</string>
+    <string name="like">喜欢</string>
+
+</resources>

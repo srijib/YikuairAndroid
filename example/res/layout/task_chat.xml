@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF" >
+
+    <RelativeLayout
+        android:id="@+id/tc_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/title_bar"
+        android:gravity="center_vertical" >
+
+        <ImageButton
+            android:id="@+id/task_btn_back"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ico_menu"
+            android:background="@drawable/title_btn"
+            android:onClick="backToTask" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/group_chat"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/task_btn_forward"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ico_add_friends"
+            android:background="@drawable/title_btn"
+            android:onClick="groupMember" >
+        </ImageButton>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/task_chat_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/chat_footer_bg" >
+
+        <LinearLayout
+            android:id="@+id/task_anniu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/task_chatting_voice_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:background="@null"
+                android:minWidth="0.0dip"
+                android:paddingBottom="4.0dip"
+                android:paddingTop="5.0dip"
+                android:src="@drawable/chatting_setmode_voice_btn"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/task_chatting_keyboard_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:background="@null"
+                android:minWidth="0.0dip"
+                android:paddingBottom="4.0dip"
+                android:paddingTop="5.0dip"
+                android:src="@drawable/message_plus"
+                android:visibility="gone" />
+
+            <ImageButton
+                android:id="@+id/task_chatting_biaoqing_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:background="@null"
+                android:minWidth="0.0dip"
+                android:paddingBottom="4.0dip"
+                android:paddingTop="5.0dip"
+                android:src="@drawable/message_plus"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/task_chatting_biaoqing_focuse_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:background="@null"
+                android:minWidth="0.0dip"
+                android:paddingBottom="4.0dip"
+                android:paddingTop="5.0dip"
+                android:src="@drawable/message_plus"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="6.0dip"
+                android:visibility="visible" >
+
+                <EditText
+                    android:id="@+id/task_et_sendmessage"
+                    android:layout_width="175dip"
+                    android:layout_height="40dip"
+                    android:background="@drawable/login_edit_normal"
+                    android:paddingTop="5.0dip"
+                    android:singleLine="true"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/task_btn_send"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="3dip"
+                    android:layout_marginRight="3dip"
+                    android:background="@drawable/chat_send_btn"
+                    android:paddingTop="5.0dip"
+                    android:text="@string/send_message" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/task_yuyin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/ll_anniu"
+                android:orientation="horizontal"
+                android:paddingTop="6.0dip"
+                android:visibility="gone" >
+
+                <Button
+                    android:id="@+id/taskbtn_yuyin"
+                    android:layout_width="210dip"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="20dip"
+                    android:background="@drawable/chat_send_btn"
+                    android:paddingTop="5.0dip"
+                    android:text="@string/press_and_speak" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <GridView
+            android:id="@+id/task_message_gridView"
+            android:layout_width="fill_parent"
+            android:layout_height="135dp"
+            android:layout_below="@+id/ll_anniu"
+            android:paddingTop="10dp"
+            android:background="#EDEDED"
+            android:cacheColorHint="#00000000"
+            android:listSelector="#00000000"
+            android:numColumns="4"
+            android:scrollbars="none"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/task_chat_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/task_chat_bottom"
+        android:layout_below="@id/tc_layout"
+        android:cacheColorHint="#00000000"
+        android:divider="@null"
+        android:dividerHeight="5dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:stackFromBottom="true" />
+
+</RelativeLayout>

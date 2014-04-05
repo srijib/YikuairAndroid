@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/location_message_titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/title_bar"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/location_message_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="10dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ico_back"
+            android:background="@color/transparent"
+            android:contentDescription="@+string/location_message_back" />
+
+        <TextView
+            android:id="@+id/licaton_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/location"
+            android:textColor="@color/white"
+            android:textSize="@dimen/abs__action_bar_title_text_size"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/location_message_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="5dp"
+            android:padding = "10dp"
+            android:src="@drawable/ico_send"
+            android:background="@color/transparent"
+            android:contentDescription="@+string/location_message_send" />
+    </LinearLayout>
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/location_message_map"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </com.baidu.mapapi.map.MapView>
+    
+    <LinearLayout 
+        android:id="@+id/location_message_bottom"
+        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/bottom_background"
+        android:orientation="vertical">
+        
+        <TextView
+            android:id="@+id/location_message_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/location"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/location_message_curlocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+"
+        
+    </LinearLayout>
+
+</LinearLayout>

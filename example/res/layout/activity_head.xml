@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/ima_head_bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/ima_top_bg"
+        android:orientation="horizontal" >
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="55"
+            android:background="@android:color/transparent"
+            tools:ignore="NestedWeights" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="345"
+            android:gravity="center"
+            android:text="@string/head_push"
+            android:textColor="@android:color/white"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/head_skip"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="60"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="@string/finish"
+            android:textColor="@android:color/white"
+            android:textSize="18dp" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:background="@android:color/transparent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="120"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="443"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="26"
+            android:background="@android:color/transparent"
+            tools:ignore="NestedWeights" />
+
+        <ImageView
+            android:id="@+id/get_phone"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="282"
+            android:background="@drawable/bt_friend_head_boy"
+            android:scaleType="fitXY"
+            android:src="@drawable/ima_friend_uploadphoto_frame"
+            tools:ignore="ContentDescription" />
+
+        <EditText
+            android:id="@+id/edit_nick_name"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:background="@android:color/white"
+            android:drawableBottom="@drawable/ima_friend_line"
+            android:gravity="center"
+            android:hint="@string/nick_name"
+            android:padding="4dp"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/black"
+            android:textSize="18sp"
+            tools:ignore="NestedWeights" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="91"
+            android:background="@android:color/transparent" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="96"
+        android:background="@android:color/transparent" />
+
+</LinearLayout>

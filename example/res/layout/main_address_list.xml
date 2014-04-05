@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_phone_book"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#fcfcfc" >
+
+    <LinearLayout
+        android:id="@+id/phone_book_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/addresslist_title"
+            android:layout_width="fill_parent"
+            android:layout_height="46dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/title_bar"
+            android:gravity="center_vertical" >
+
+            <ImageButton
+                android:id="@+id/addresslist_left_btn"
+                android:layout_width="50dp"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/title_btn"
+                android:onClick="openMainMenu"
+                android:src="@drawable/ico_menu" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true" >
+
+                <LinearLayout
+                    android:id="@+id/phonebook_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:id="@+id/all_staff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:gravity="center_vertical"
+                        android:text="@string/all_staff"
+                        android:textColor="#ffffff"
+                        android:textSize="18dp" />
+
+                    <ImageButton
+                        android:id="@+id/menu_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:background="@drawable/ico_open" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <ImageButton
+                android:id="@+id/addresslist_right_btn"
+                android:layout_width="50dp"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/title_btn"
+                android:src="@drawable/ico_add_friends" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/search_bar_bg"
+            android:gravity="center" >
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="30dp"
+                android:background="@drawable/search_bar_edit_bg"
+                android:drawableLeft="@drawable/search_bar_icon_normal"
+                android:hint="@string/address_list_search"
+                android:singleLine="true"
+                android:textColor="#000"
+                android:textSize="15dp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/et_search"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@id/et_search"
+                android:layout_marginRight="35dp" >
+
+                <ImageView
+                    android:id="@+id/iv_clear_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ico_delete_1"
+                    android:clickable="true"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/group_chat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:visibility="gone" >
+
+                <ListView
+                    android:id="@+id/group_list_view"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:cacheColorHint="#00000000"
+                    android:scrollbars="none" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center" >
+
+            <ListView
+                android:id="@+id/phone_list_view"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:cacheColorHint="@android:color/transparent"
+                android:listSelector="@drawable/item_selector"
+                android:scrollbars="none" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_letterlist"
+        android:layout_width="30dp"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="45dp"
+        android:background="@android:color/transparent" >
+
+        <com.bestapp.yikuair.fragments.LetterListView
+            android:id="@+id/phoneBookLetterList"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@android:color/transparent" />
+    </LinearLayout>
+
+</RelativeLayout>

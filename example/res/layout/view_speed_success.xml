@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:background="@android:color/transparent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="188"
+            android:gravity="center"
+            android:text="@string/pair_success"
+            android:textColor="@android:color/white"
+            android:textSize="19sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="45"
+            android:orientation="horizontal" >
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="60"
+                android:background="@android:color/transparent"
+                tools:ignore="NestedWeights" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="360"
+                android:scaleType="fitXY"
+                android:src="@drawable/ima_friend_heartline_white"
+                tools:ignore="ContentDescription" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="60"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="260"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="56"
+                android:background="@android:color/transparent"
+                tools:ignore="NestedWeights" />
+
+            <ImageView
+                android:id="@+id/man"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="156"
+                android:background="@drawable/white_shape"
+                android:padding="1dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ima_friend_photo_big"
+                tools:ignore="ContentDescription" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="56"
+                android:background="@android:color/transparent" />
+
+            <ImageView
+                android:id="@+id/woman"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="156"
+                android:background="@drawable/white_shape"
+                android:padding="1dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ima_friend_photo_big"
+                tools:ignore="ContentDescription" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="56"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="200"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="68"
+                android:background="@android:color/transparent"
+                tools:ignore="NestedWeights" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="80"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="53"
+                    android:background="@android:color/transparent" />
+
+                <Button
+                    android:id="@+id/continue_bt"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="168"
+                    android:background="@drawable/bt_friend_grey_bg"
+                    android:text="@string/continue_bt"
+                    android:textColor="#777777"
+                    android:textSize="19sp" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="53"
+                    android:background="@android:color/transparent" />
+
+                <Button
+                    android:id="@+id/chat"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="168"
+                    android:background="@drawable/bt_pink_bg"
+                    android:text="@string/chat"
+                    android:textColor="@android:color/white"
+                    android:textSize="19sp" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="53"
+                    android:background="@android:color/transparent" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="68"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

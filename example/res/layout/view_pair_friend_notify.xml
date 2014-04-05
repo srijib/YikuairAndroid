@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/mm_listitem" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical" >
+
+        <ImageView
+            android:id="@+id/pair_ico_view"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/info_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="38dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/message_count_style"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="10sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/pair_ico_view"
+            android:layout_alignTop="@id/pair_ico_view"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/pair_ico_view" >
+
+            <TextView
+                android:id="@+id/pair_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="150dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="#AAAAAA"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/pair_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="100dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="#666"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/pair_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@id/pair_name"
+                android:layout_marginRight="5dp"
+                android:singleLine="true"
+                android:textColor="#AAAAAA"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/pair_far"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/pair_info"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:singleLine="true"
+                android:textColor="#AAAAAA"
+                android:textSize="13sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

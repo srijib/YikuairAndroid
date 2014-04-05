@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#056099">
+    <LinearLayout
+        android:id="@+id/image_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ima_logo"
+            android:scaleType="matrix" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/login_email"
+        android:layout_width="fill_parent"
+        android:layout_height="36dp"
+        android:layout_below="@+id/image_icon"
+        android:layout_gravity="center"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="11dp"
+        android:drawableLeft="@drawable/ico_account"
+        android:drawablePadding="10dp"
+        android:background="#1e71a3"
+        android:hint="@string/login_email"
+        android:singleLine="true"
+        android:textColor="#ffffff"
+        android:textColorHint="#599cc6"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="fill_parent"
+        android:layout_height="36dp"
+        android:layout_below="@+id/login_email"
+        android:layout_gravity="center"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="13dp"
+        android:drawableLeft="@drawable/ico_password"
+        android:drawablePadding="10dp"
+        android:background="#1e71a3"
+        android:hint="@string/login_password"
+        android:paddingLeft="11dp"
+        android:password="true"
+        android:imeOptions="actionDone"
+        android:textColor="#ffffff"
+        android:textColorHint="#599cc6"
+        android:textSize="15dp" />
+
+    <Button
+        android:id="@+id/enterBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="36dp"
+        android:layout_below="@id/login_password"
+        android:layout_gravity="center"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/login_btn_background"
+        android:onClick="loginRequest"
+        android:text="@string/login"
+        android:textColor="#ffffff"
+        android:textSize="15dp" />
+
+    <ImageView
+        android:id="@+id/serve_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ima_contact" />
+
+</RelativeLayout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#fcfcfc" >
+
+    <RelativeLayout
+        android:id="@+id/rl_title"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/title_bar"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:background="@drawable/title_btn"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="quitChangeMobile"
+            android:text="@string/btn_back"
+            android:textColor="#fff" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/change_mobile"
+            android:textColor="#fff"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/title_btn"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="checkModifyMobile"
+            android:text="确定"
+            android:textColor="#fff" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_title"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="您的原手机号为："
+            android:textColor="#000"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tv_mobile_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_change_mobile"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/ll_hint"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/schedule_bar_edit_bg"
+        android:digits="1234567890"
+        android:singleLine="true"
+        android:numeric="integer"
+        android:hint="@string/change_mobile_num"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/tv_submit_success"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_change_mobile"
+        android:layout_alignRight="@id/et_change_mobile"
+        android:layout_marginTop="10dp"
+        android:text="保存成功"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_start">开始体验</string>
+    <string name="nick_name">昵称</string>
+</resources>
