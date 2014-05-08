@@ -49,14 +49,14 @@ public class FriendSuccessView extends Activity implements OnClickListener {
 		ImageView womanView = (ImageView) findViewById(R.id.woman);
 		manView.setLayoutParams(new LinearLayout.LayoutParams(
 				(int) (width / 40.0 * 13), (int) (width / 40.0 * 13)));
-		if (SpeedFriendFragment.instance.drawable != null)
-			manView.setImageDrawable(SpeedFriendFragment.instance.drawable);
+//		if (SpeedFriendFragment.instance.drawable != null)
+//			manView.setImageDrawable(SpeedFriendFragment.instance.drawable);
 
 		womanView.setLayoutParams(new LinearLayout.LayoutParams(
 				(int) (width / 40.0 * 13), (int) (width / 40.0 * 13)));
-		if (accountInfomation.getHeadurl() != null)
-			SpeedFriendFragment.instance.mAsyncImageLoader.loadBitmap(
-					womanView, accountInfomation.getHeadurl(), 0);
+//		if (accountInfomation.getHeadurl() != null)
+//			SpeedFriendFragment.instance.mAsyncImageLoader.loadBitmap(
+//					womanView, accountInfomation.getHeadurl(), 0);
 		Button continueButton = (Button) findViewById(R.id.continue_bt);
 		Button chatButton = (Button) findViewById(R.id.chat);
 		continueButton.setOnClickListener(this);

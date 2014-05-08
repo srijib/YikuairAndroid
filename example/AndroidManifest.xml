@@ -247,14 +247,11 @@
                 <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
             </intent-filter>
         </receiver>
-
-       <!--  <receiver android:name=".utils.OFFTimeInfomationReceiver" >
+<!--         <receiver android:name=".utils.OFFTimeInfomationReceiver" >
             <intent-filter>
                 <action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
             </intent-filter>
         </receiver> -->
-        
-
 
         <!-- push service -->
         <receiver
@@ -301,9 +298,8 @@
                 </action>
             </intent-filter>
         </service>
-        
-        
-         <meta-data
+
+        <meta-data
             android:name="UMENG_APPKEY"
             android:value="5274fee456240b7109152b23" >
         </meta-data>

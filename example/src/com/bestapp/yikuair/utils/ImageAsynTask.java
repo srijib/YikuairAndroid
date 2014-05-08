@@ -97,7 +97,7 @@ class ImageAsynTask extends AsyncTask<Void, Void, byte[]>
 	}
 
 	public byte[] loadImages(String name) {
-		String url = "http://img.yikuair.com/static" + name;
+		String url = "http://192.168.1.2:8080/static" + name;
 		try {
 			URL ul = new URL(url);
 			if (ul != null) {

@@ -1,4 +1,4 @@
-package com.bestapp.yikuair.utils;
+/*package com.bestapp.yikuair.utils;
 
 
 import java.util.ArrayList;
@@ -65,9 +65,6 @@ public class OFFTimeInfomationReceiver extends BroadcastReceiver {
 					entity.setMsguuid(jsonObject2.getString("msguuid"));
 					JSONObject jsonObject3 = new JSONObject(s1.toString());
 					String type = jsonObject3.getString("type");
-					if (!type.equals("4")) {
-						return;
-					}
 					if (jsonObject3.has("token")) {
 
 						
@@ -153,7 +150,7 @@ public class OFFTimeInfomationReceiver extends BroadcastReceiver {
 									entity.setList(list_pc);
 								}
 							}
-							MessageInfo.OfficeAccountList.add(entity);
+//							MessageInfo.OfficeAccountList.add(entity);
 							DBlog.e("OfficeAccountList",
 									MessageInfo.OfficeAccountList.size() + "");
 							mClientSocket.sendMessage(null, 7,
@@ -220,3 +217,4 @@ public class OFFTimeInfomationReceiver extends BroadcastReceiver {
 		};
 	};
 }
+*/

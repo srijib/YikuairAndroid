@@ -37,19 +37,19 @@ public class UserInfo {
 	public static int screenHeight;
 	public static String token = "00-21-cc-b5-63-2c";
 	public static final String key = "_yikuair";
-	public static final String modifyPasswordUrl = "http://121.199.9.221:8080/yikuairAPI/a/user/repwd?__=";
-	public static final String getGroupMemberUrl = "http://api.yikuair.com/yikuairAPI/a/group/member?__=";
+	public static final String modifyPasswordUrl = "http://192.168.1.2:8080/yikuairAPI/a/user/repwd?__=";
+	public static final String getGroupMemberUrl = "http://192.168.1.2:8080/yikuairAPI/a/group/member?__=";
 
-	public static final String requestUrl = "http://121.199.9.221:8080/yikuairAPI/a/user/login?__=";
-	public static final String downloadImgUrl = "img.yikuair.com/static";
-	public static final String downloadVoiceUrl = "voice.yikuair.com/static";
-	public static final String uploadHeaderUrl = "http://121.199.9.221:8080/yikuairAPI/a/upload/header";
+	public static final String requestUrl = "http://192.168.1.2:8080/yikuairAPI/a/user/login?__=";
+	public static final String downloadImgUrl = "192.168.1.2:8080/yikuairAPI/static";
+	public static final String downloadVoiceUrl = "192.168.1.2:8080/yikuairAPI/static";
+	public static final String uploadHeaderUrl = "http://192.168.1.2:8080/yikuairAPI/a/upload/header";
 
-	public static final String uploadRequestUrl = "http://121.199.9.221:8080/yikuairAPI/a/upload/file";
-	public static final String addTaskUrl = "http://121.199.9.221:8080/yikuairAPI/a/task/add?__=";
-	public static final String getTaskListUrl = "http://121.199.9.221:8080/yikuairAPI/a/task/list?__=";
-	public static final String getContactUrl = "http://121.199.9.221:8080/yikuairAPI/a/user/list?__=";
-	public static final String getSearchResultUrl = "http://121.199.9.221:8080/yikuairAPI/a/user?__=";
+	public static final String uploadRequestUrl = "http://192.168.1.2:8080/yikuairAPI/a/upload/file";
+	public static final String addTaskUrl = "http://192.168.1.2:8080/yikuairAPI/a/task/add?__=";
+	public static final String getTaskListUrl = "http://192.168.1.2:8080/yikuairAPI/a/task/list?__=";
+	public static final String getContactUrl = "http://192.168.1.2:8080/yikuairAPI/a/user/list?__=";
+	public static final String getSearchResultUrl = "http://192.168.1.2:8080/yikuairAPI/a/user?__=";
 	public static final String updateSuccess = "UPDATESUCCESS";
 	public static ClientSocket clientsocket;
 	public static String nick_name;

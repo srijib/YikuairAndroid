@@ -24,7 +24,7 @@ import com.bestapp.yikuair.R;
 import com.bestapp.yikuair.adapter.SubscriptionAdapter;
 import com.bestapp.yikuair.fragments.ChatMsgEntity;
 import com.bestapp.yikuair.utils.AccountInfomation;
-import com.bestapp.yikuair.utils.Client;
+//import com.bestapp.yikuair.utils.Client;
 import com.bestapp.yikuair.utils.CustomToast;
 import com.bestapp.yikuair.utils.DBlog;
 import com.bestapp.yikuair.utils.MessageInfo;
@@ -131,22 +131,22 @@ public class SubActivity extends OfficialAccountBaseActivity implements
 		super.onResume();
 	}
 
-	@Override
-	public void onWindowFocusChanged(boolean hasFocus) {
-		refreshAccountList();
-		refresh = false;
-		super.onWindowFocusChanged(hasFocus);
-	};
+//	@Override
+//	public void onWindowFocusChanged(boolean hasFocus) {
+//		refreshAccountList();
+//		refresh = false;
+//		super.onWindowFocusChanged(hasFocus);
+//	};
 
-	private void refreshAccountList() {
-		if (refresh) {
-			getInfomation();
-		}
-	}
+//	private void refreshAccountList() {
+//		if (refresh) {
+//			getInfomation();
+//		}
+//	}
 
-	private void getInfomation() {
-		Client.get(ResponseHandler);
-	}
+//	private void getInfomation() {
+//		Client.get(ResponseHandler);
+//	}
 
 	final AsyncHttpResponseHandler ResponseHandler = new AsyncHttpResponseHandler() {
 		@Override

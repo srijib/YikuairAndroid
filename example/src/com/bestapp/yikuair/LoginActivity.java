@@ -15,7 +15,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -25,6 +24,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.baidu.android.pushservice.PushConstants;
@@ -54,6 +54,7 @@ public class LoginActivity extends Activity {
 
 	private EditText email;
 	private EditText password;
+	private Button enterBtn;
 	private ClientSocket client;
 	private LoginResultBroadcastReceiver lbr = null;
 	private String userEmail;
@@ -64,11 +65,11 @@ public class LoginActivity extends Activity {
 	private String tempEmail;
 	private String tempPassword;
 	private ImageBroadcastReceiver ibr = null;
-	private boolean isDownloadPhotoFinished = false;
+	private boolean isDownloadPhotoFinished = true;
 	private SharedPreferencesUtil shared;
 	private String newUrl;
 	public static LoginActivity instance = null;
-	private int loginCount;
+	// private int loginCount;
 	private static final int maxLoginCount = 3;
 	private ScheduleResultBroadReceiver sbr = null;
 	private HomeKeyEventBroadCastReceiver receiver = null;
@@ -102,6 +103,16 @@ public class LoginActivity extends Activity {
 		mDialog = new AlertDialog.Builder(this).create();
 		client = new ClientSocket(this);
 		contactUtil = new ContactUtil(this);
+		enterBtn = (Button) findViewById(R.id.enterBtn);
+		enterBtn.setOnClickListener(new android.view.View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				beginRequest();
+			}
+
+		});
 	}
 
 	public void registerPushService() {
@@ -113,6 +124,7 @@ public class LoginActivity extends Activity {
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 			case 1:
+				startFirstModifyPassword();
 				break;
 			case 2:
 				startEnterMainActivity();
@@ -177,14 +189,10 @@ public class LoginActivity extends Activity {
 		}
 	}
 
-	public void loginRequest(View view) {
-		loginCount++;
-		if (loginCount > maxLoginCount) {
-			showCheckDialog();
-		} else {
-			beginRequest();
-		}
-	}
+	// public void loginRequest(View view) {
+	//
+	// beginRequest();
+	// }
 
 	public void closeLoadingDialog() {
 		// Log.i("test","close.............");
@@ -340,7 +348,6 @@ public class LoginActivity extends Activity {
 			String result = arg1.getStringExtra("result");
 			int resultCode = arg1.getIntExtra("code", 0);
 			int token = arg1.getIntExtra("token", 0);
-			boolean updatePWD = arg1.getBooleanExtra("updataPWD", true);
 			String num = arg1.getStringExtra("num");
 			Log.e("test", "resultCode  :" + resultCode);
 			Log.e("test", "token :" + token);
@@ -348,30 +355,32 @@ public class LoginActivity extends Activity {
 			if (resultCode == 200) {
 				if (token == 100) {
 					Log.i("test", "token == 100....................");
-					loginCount = 0;
+					// loginCount = 0;
 					readDataFromJson(result);
-					if (contactUtil == null) {
+					// if (isFirstLogin()) {
+					// Log.i("test", "first login");
+					if (contactUtil != null) {
+						contactUtil.requestContact();
+					} else {
 						contactUtil = new ContactUtil(LoginActivity.this);
+						contactUtil.requestContact();
 					}
-					contactUtil.requestContact();
+					// setPassword();
+					// } else {
+					Log.e("test", "token 0...........");
+					enterMainActivity();
 					client.sendMessage(null, 0,
 							StringWidthWeightRandom.getNextString(), null,
 							null, null, null, null, null, null, null, false);
-					if (!updatePWD) {
-						Log.i("FM", "first login");
-						setPassword();
-					} else {
-						Log.e("test", "token 0...........");
-						client.sendMessage(null, 0,
-								StringWidthWeightRandom.getNextString(), null,
-								null, null, null, null, null, null, null, false);
-					}
+					// }
 				} else if (token == 200) {
 					Log.e("test", "token == 200....................");
 					client.socket = null;
 					client.createClient(tempEmail, tempPassword);
-				} else if (token == 0 && !UserInfo.isFirstLogin
-						&& !UserInfo.isRecreateConnection) {
+				} else if (token == 0 /*
+									 * && !UserInfo.isFirstLogin &&
+									 * !UserInfo.isRecreateConnection
+									 */) {
 					Log.e("test", "not first login in ");
 					UserInfo.isRecreateConnection = true;
 					enterMainActivity();
@@ -432,27 +441,26 @@ public class LoginActivity extends Activity {
 		}
 	}
 
-	private final class ContactRequestTask extends
-			AsyncTask<String, Void, Boolean> {
-
-		@Override
-		protected Boolean doInBackground(String... params) {
-			// TODO Auto-generated method stub
-
-			contactUtil.requestContact();
-			return true;
-		}
-
-		// @Override
-		// protected void onPostExecute(Boolean result) {
-		// // setPassword();
-		// }
-
-	}
-
 	private void setPassword() {
-
+		if (!isDownloadPhotoFinished) {
+			new Thread() {
+				@Override
+				public void run() {
+					try {
+						while (!isDownloadPhotoFinished) {
+							// loading
+						}
+						Message message = new Message();
+						message.what = 1;
+						handler.sendMessage(message);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}.start();
+		} else {
 			startFirstModifyPassword();
+		}
 	}
 
 	protected void dialog(String num) {
@@ -501,25 +509,25 @@ public class LoginActivity extends Activity {
 	}
 
 	private void enterMainActivity() {
-		if (!isDownloadPhotoFinished) {
-			new Thread() {
-				@Override
-				public void run() {
-					try {
-						while (!isDownloadPhotoFinished) {
-							// loading
-						}
-						Message message = new Message();
-						message.what = 2;
-						handler.sendMessage(message);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-			}.start();
-		} else {
-			startEnterMainActivity();
-		}
+		// if (!isDownloadPhotoFinished) {
+		// new Thread() {
+		// @Override
+		// public void run() {
+		// try {
+		// while (!isDownloadPhotoFinished) {
+		// // loading
+		// }
+		// Message message = new Message();
+		// message.what = 2;
+		// handler.sendMessage(message);
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// }
+		// }
+		// }.start();
+		// } else {
+		startEnterMainActivity();
+		// }
 	}
 
 	private void startEnterMainActivity() {

@@ -7,15 +7,23 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.bestapp.yikuair.utils.Client;
+//import com.bestapp.yikuair.utils.Client;
 import com.bestapp.yikuair.utils.DBlog;
 import com.bestapp.yikuair.utils.DataUtil;
 import com.bestapp.yikuair.utils.DesECBUtil;
 import com.bestapp.yikuair.utils.UserInfo;
 
 public class MenuHttp {
+	
+	private static AsyncHttpClient client = new AsyncHttpClient();
+	private static final String BASE_URL = "192.168.1.2:8080/yikuairAPI/a/star/list?";
+	private static final String Menu_URL = "192.168.1.2:8080/yikuairAPI/a/star/button/list?";
+	private static final String Menu_USE_URL = "192.168.1.2:8080/yikuairAPI/a/star/button/message?";
+	private static final String SUB_USE_URL = "192.168.1.2:8080/yikuairAPI/a/star/attention/list?";
+	private static final String OFF_LINE_MESSAGE = "192.168.1.2:8080/yikuairAPI/a/message/list?";
 
 	public void getMenuList(String toId,
 			AsyncHttpResponseHandler ResponseHandler) throws Exception {
@@ -28,7 +36,13 @@ public class MenuHttp {
 		RequestParams params = new RequestParams();
 		params.put("__", afterurl);
 		DBlog.e("params", params.toString());
-		Client.getMenu(params, ResponseHandler);
+		getMenu(params, ResponseHandler);
+	}
+	public static void getMenu(RequestParams params,
+			AsyncHttpResponseHandler responseHandler) {
+		String urlString = Menu_URL + params.toString();
+		DBlog.e("url", urlString);
+		client.get(urlString, responseHandler);
 	}
 
 	public ArrayList<MenuData> getMenuList(String josn) throws JSONException {
@@ -81,7 +95,7 @@ public class MenuHttp {
 		RequestParams params = new RequestParams();
 		params.put("__", afterurl);
 		DBlog.e("params", params.toString());
-		Client.UseMenu(params, ResponseHandler);
+		UseMenu(params, ResponseHandler);
 	}
 
 	public void getOffTimeMessage(AsyncHttpResponseHandler ResponseHandler)
@@ -99,7 +113,13 @@ public class MenuHttp {
 		RequestParams params = new RequestParams();
 		params.put("__", afterurl);
 		DBlog.e("params", params.toString());
-		Client.getOffTimeMessage(params, ResponseHandler);
+		getOffTimeMessage(params, ResponseHandler);
+	}
+	public static void getOffTimeMessage(RequestParams params,
+			AsyncHttpResponseHandler responseHandler) {
+		String urlString = "192.168.1.2:8080/yikuairAPI/a/message/list?" + params.toString();
+		DBlog.e("sdasdasdasd", urlString);
+		client.get(urlString, responseHandler);
 	}
 
 	public void sendMessageBefore(String toId, String content,
@@ -108,7 +128,7 @@ public class MenuHttp {
 				+ UserInfo.id
 				+ "&password="
 				+ UserInfo.cipher_password
-				+ "&callbackurl=http%3A%2F%2Fapi.yikuair.com%2FyikuairAPI%2Fa%2Ftest%2Fcallback&msz"
+				+ "&callbackurl=http%3A%2F%2F192.168.1.2:8080%2FyikuairAPI%2Fa%2Ftest%2Fcallback&msz"
 				+ "&id=-1&content=" + URLEncoder.encode(DataUtil.ecodeBase64(content.getBytes()))
 				+ "&to=" + toId;
 		String afterurl = null;
@@ -117,9 +137,15 @@ public class MenuHttp {
 		afterurl = URLEncoder.encode(data, "utf-8");
 		RequestParams params = new RequestParams();
 		params.put("__", afterurl);
-		Client.UseMenu(params, ResponseHandler);
+		UseMenu(params, ResponseHandler);
 	}
 
+	public static void UseMenu(RequestParams params,
+			AsyncHttpResponseHandler responseHandler) {
+		String urlString = Menu_USE_URL + params.toString();
+		DBlog.e("url", urlString);
+		client.get(urlString, responseHandler);
+	}
 	public class MenuData {
 		public String callbackurl;
 		public String msguuid;

@@ -2,7 +2,7 @@ package com.bestapp.yikuair.adapter;
 
 import java.util.ArrayList;
 
-import com.bestapp.yikuair.officialaccount.SpeedFriendFragment;
+//import com.bestapp.yikuair.officialaccount.SpeedFriendFragment;
 import com.bestapp.yikuair.utils.AccountInfomation;
 import com.bestapp.yikuair.R;
 
@@ -82,8 +82,8 @@ public class PairFriendAdapter extends BaseAdapter {
 		mHoldView.info.setText(subscripitionInfo.getInformation());
 		mHoldView.time.setText(subscripitionInfo.getTime());
 		mHoldView.far.setText(subscripitionInfo.getDistance());
-		SpeedFriendFragment.instance.mAsyncImageLoader.loadBitmap(
-				mHoldView.ico, subscripitionInfo.getHeadurl(), 0);
+//		SpeedFriendFragment.instance.mAsyncImageLoader.loadBitmap(
+//				mHoldView.ico, subscripitionInfo.getHeadurl(), 0);
 		if (subscripitionInfo.getInfor_num() != 0) {
 			mHoldView.info_num.setText(String.valueOf(subscripitionInfo
 					.getInfor_num()));

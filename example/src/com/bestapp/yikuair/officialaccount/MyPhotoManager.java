@@ -23,13 +23,13 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.bestapp.yikuair.utils.AccountInfomation;
-import com.bestapp.yikuair.utils.Client;
+//import com.bestapp.yikuair.utils.Client;
 import com.bestapp.yikuair.utils.DBlog;
 import com.bestapp.yikuair.utils.UserInfo;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 
-public class MyPhotoManager implements PhotoManager {
+public abstract class MyPhotoManager implements PhotoManager {
 	public static final String strKey = "MDKO5Tv8eO36jXtElcIuZ99s";
 	private int TYPE = 0;
 	private Context mContext;
@@ -42,27 +42,27 @@ public class MyPhotoManager implements PhotoManager {
 		iBackInfo = backInfo;
 	}
 
-	@Override
-	public void uploadingPhoto(final Bitmap bitmap) {
-
-		new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-
-				// ByteArrayOutputStream baos = new ByteArrayOutputStream();
-				// bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-				try {
-					Client.test(imageZoom(bitmap));
-				} catch (ClientProtocolException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}).start();
-
-	}
+//	@Override
+//	public void uploadingPhoto(final Bitmap bitmap) {
+//
+//		new Thread(new Runnable() {
+//
+//			@Override
+//			public void run() {
+//
+//				// ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//				// bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//				try {
+//					Client.test(imageZoom(bitmap));
+//				} catch (ClientProtocolException e) {
+//					e.printStackTrace();
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}).start();
+//
+//	}
 
 	private byte[] imageZoom(Bitmap bitMap) {
 		double maxSize = 400.00;
@@ -171,23 +171,23 @@ public class MyPhotoManager implements PhotoManager {
 		return false;
 	}
 
-	private boolean upLoadingLoactionBackJson(String content) {
-		try {
-
-			JSONObject object = new JSONObject(content);
-			if (object.has("message")) {
-				if (object.getString("message").trim().equals("success")) {
-					Client.loadingPeople(lon + "", lan + "", ResponseHandler);
-					TYPE = 3;
-					return true;
-				}
-			}
-
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
+//	private boolean upLoadingLoactionBackJson(String content) {
+//		try {
+//
+//			JSONObject object = new JSONObject(content);
+//			if (object.has("message")) {
+//				if (object.getString("message").trim().equals("success")) {
+//					Client.loadingPeople(lon + "", lan + "", ResponseHandler);
+//					TYPE = 3;
+//					return true;
+//				}
+//			}
+//
+//		} catch (JSONException e) {
+//			e.printStackTrace();
+//		}
+//		return false;
+//	}
 
 	private String getMyHeadJson(String content) {
 
@@ -219,18 +219,18 @@ public class MyPhotoManager implements PhotoManager {
 
 	private boolean like;
 
-	public void sendLikeOrNot(boolean tag, String id) {
-		String like_type;
-		like = tag;
-		if (tag) {
-			like_type = "1";
-		} else {
-			like_type = "0";
-		}
-		TYPE = 4;
-		Client.likeOrNot(id, like_type, ResponseHandler);
-
-	}
+//	public void sendLikeOrNot(boolean tag, String id) {
+//		String like_type;
+//		like = tag;
+//		if (tag) {
+//			like_type = "1";
+//		} else {
+//			like_type = "0";
+//		}
+//		TYPE = 4;
+//		Client.likeOrNot(id, like_type, ResponseHandler);
+//
+//	}
 
 	public String getDistatce(double lat1, double lat2, double lon1, double lon2) {
 		double R = 6371;
@@ -246,59 +246,59 @@ public class MyPhotoManager implements PhotoManager {
 		return distance + "";
 	}
 
-	@Override
-	public void loadingMyPhotoUrl() {
-		TYPE = 1;
-		Client.getPhoto(ResponseHandler);
-	}
+//	@Override
+//	public void loadingMyPhotoUrl() {
+//		TYPE = 1;
+//		Client.getPhoto(ResponseHandler);
+//	}
 
 	LocationClient locationClient;
 
-	@Override
-	public void uploadingLocation() {
-
-		locationClient = new LocationClient(mContext);
-		// 设置定位条件
-		LocationClientOption option = new LocationClientOption();
-		option.setOpenGps(true); // 是否打开GPS
-		option.setCoorType("bd09ll"); // 设置返回值的坐标类型。
-		option.setPriority(LocationClientOption.NetWorkFirst); // 设置定位优先级
-		option.setProdName("LocationDemo"); // 设置产品线名称。强烈建议您使用自定义的产品线名称，方便我们以后为您提供更高效准确的定位服务。
-		option.setScanSpan(1000); // 设置定时定位的时间间隔。单位毫秒
-		locationClient.setLocOption(option);
-		locationClient.start();
-		locationClient.requestLocation();
-		// 注册位置监听器
-		locationClient.registerLocationListener(new BDLocationListener() {
-
-			@Override
-			public void onReceiveLocation(BDLocation location) {
-				// TODO Auto-generated method stub
-				if (location == null) {
-					return;
-				}
-
-				if (TYPE != 2) {
-					TYPE = 2;
-					if (locationClient != null && locationClient.isStarted()) {
-						locationClient.stop();
-						locationClient = null;
-					}
-					lon = location.getLongitude();
-					lan = location.getLatitude();
-					UserInfo.lon = lon;
-					UserInfo.lan = lan;
-					Client.upLoadingLocation(lon + "", lan + "",
-							ResponseHandler);
-				}
-			}
-
-			@Override
-			public void onReceivePoi(BDLocation location) {
-			}
-
-		});
-	}
+//	@Override
+//	public void uploadingLocation() {
+//
+//		locationClient = new LocationClient(mContext);
+//		// 设置定位条件
+//		LocationClientOption option = new LocationClientOption();
+//		option.setOpenGps(true); // 是否打开GPS
+//		option.setCoorType("bd09ll"); // 设置返回值的坐标类型。
+//		option.setPriority(LocationClientOption.NetWorkFirst); // 设置定位优先级
+//		option.setProdName("LocationDemo"); // 设置产品线名称。强烈建议您使用自定义的产品线名称，方便我们以后为您提供更高效准确的定位服务。
+//		option.setScanSpan(1000); // 设置定时定位的时间间隔。单位毫秒
+//		locationClient.setLocOption(option);
+//		locationClient.start();
+//		locationClient.requestLocation();
+//		// 注册位置监听器
+//		locationClient.registerLocationListener(new BDLocationListener() {
+//
+//			@Override
+//			public void onReceiveLocation(BDLocation location) {
+//				// TODO Auto-generated method stub
+//				if (location == null) {
+//					return;
+//				}
+//
+//				if (TYPE != 2) {
+//					TYPE = 2;
+//					if (locationClient != null && locationClient.isStarted()) {
+//						locationClient.stop();
+//						locationClient = null;
+//					}
+//					lon = location.getLongitude();
+//					lan = location.getLatitude();
+//					UserInfo.lon = lon;
+//					UserInfo.lan = lan;
+//					Client.upLoadingLocation(lon + "", lan + "",
+//							ResponseHandler);
+//				}
+//			}
+//
+//			@Override
+//			public void onReceivePoi(BDLocation location) {
+//			}
+//
+//		});
+//	}
 
 	final AsyncHttpResponseHandler ResponseHandler = new AsyncHttpResponseHandler() {
 		@Override
@@ -311,7 +311,7 @@ public class MyPhotoManager implements PhotoManager {
 				break;
 
 			case 2:
-				upLoadingLoactionBackJson(arg1);
+//				upLoadingLoactionBackJson(arg1);
 				break;
 			case 3:
 				iBackInfo.fillContentToPeopleList(getAroundJson(arg1));
@@ -378,6 +378,18 @@ public class MyPhotoManager implements PhotoManager {
 		public void likeMe(boolean arg0, boolean arg1);
 
 		public void fillPhotoSeek(String url);
+	}
+
+	@Override
+	public void loadingMyPhotoUrl() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void uploadingLocation() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -41,9 +41,9 @@ import com.bestapp.yikuair.R;
 import com.bestapp.yikuair.database.DBOpenHelper;
 import com.bestapp.yikuair.officialaccount.MyPhotoManager;
 import com.bestapp.yikuair.officialaccount.OfficialAccountFragment;
-import com.bestapp.yikuair.officialaccount.SpeedFriendFragment;
+//import com.bestapp.yikuair.officialaccount.SpeedFriendFragment;
 import com.bestapp.yikuair.utils.AccountInfomation;
-import com.bestapp.yikuair.utils.Client;
+//import com.bestapp.yikuair.utils.Client;
 import com.bestapp.yikuair.utils.DBlog;
 import com.bestapp.yikuair.utils.ImgButton;
 import com.bestapp.yikuair.utils.MessageInfo;
@@ -51,7 +51,7 @@ import com.bestapp.yikuair.utils.SharedPreferencesUtil;
 import com.bestapp.yikuair.utils.UserInfo;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
-public class MenuFragment extends Fragment implements MyPhotoManager.BackInfo {
+public class MenuFragment extends Fragment {
 
 	private TextView staffName;
 	private TextView jobPosition;
@@ -83,7 +83,7 @@ public class MenuFragment extends Fragment implements MyPhotoManager.BackInfo {
 	private DBOpenHelper dbOpenHelper;
 	private Cursor cursor;
 	private static boolean Loaded = false;
-	private MyPhotoManager mPhotoManager;
+//	private MyPhotoManager mPhotoManager;
 	FriendChatBroadcastReceiver fbr;
 
 	public class FriendChatBroadcastReceiver extends BroadcastReceiver {
@@ -128,7 +128,7 @@ public class MenuFragment extends Fragment implements MyPhotoManager.BackInfo {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		mPhotoManager = new MyPhotoManager(getActivity(), this);
+//		mPhotoManager = new MyPhotoManager(getActivity(), this);
 		return inflater.inflate(R.layout.menu_list, null);
 	}
 
@@ -188,10 +188,10 @@ public class MenuFragment extends Fragment implements MyPhotoManager.BackInfo {
 					}
 
 				}
-				if (!Loaded) {
-					Loaded = true;
-					Client.get(ResponseHandler);
-				}
+//				if (!Loaded) {
+//					Loaded = true;
+//					Client.get(ResponseHandler);
+//				}
 
 			} catch (JSONException e) {
 				e.printStackTrace();
@@ -206,17 +206,17 @@ public class MenuFragment extends Fragment implements MyPhotoManager.BackInfo {
 	public void initView() {
 		Log.e("test", "menu initView....");
 
-		if (!Loaded) {
-
-			new Thread(new Runnable() {
-
-				@Override
-				public void run() {
-					mPhotoManager.loadingMyPhotoUrl();
-					Client.getSub(ResponseHandler);
-				}
-			}).start();
-		}
+//		if (!Loaded) {
+//
+//			new Thread(new Runnable() {
+//
+//				@Override
+//				public void run() {
+////					mPhotoManager.loadingMyPhotoUrl();
+//					Client.getSub(ResponseHandler);
+//				}
+//			}).start();
+//		}
 
 		fbr = new FriendChatBroadcastReceiver();
 		registerBroadcast();
@@ -523,9 +523,7 @@ public class MenuFragment extends Fragment implements MyPhotoManager.BackInfo {
 					newContent = new OfficialAccountFragment();
 					break;
 
-				case COMPANY_FRIENDS:
-					newContent = new SpeedFriendFragment();
-					break;
+
 				}
 
 				if (newContent != null)
@@ -1180,21 +1178,21 @@ public class MenuFragment extends Fragment implements MyPhotoManager.BackInfo {
 		}
 	}
 
-	@Override
-	public void fillContentToPeopleList(ArrayList<AccountInfomation> list) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void likeMe(boolean arg0, boolean arg1) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void fillPhotoSeek(String url) {
-		// TODO Auto-generated method stub
-
-	}
+//	@Override
+//	public void fillContentToPeopleList(ArrayList<AccountInfomation> list) {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void likeMe(boolean arg0, boolean arg1) {
+//		// TODO Auto-generated method stub
+//
+//	}
+//
+//	@Override
+//	public void fillPhotoSeek(String url) {
+//		// TODO Auto-generated method stub
+//
+//	}
 }

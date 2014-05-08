@@ -506,6 +506,9 @@ public class ClientSocket {
 				.getSystemService(Context.WIFI_SERVICE);
 		WifiInfo info = wifi.getConnectionInfo();
 		UserInfo.mac_address = info.getMacAddress();
+//		ClientConServerThread ccst = new ClientConServerThread(
+//				context, socket);
+//		ccst.start();
 	}
 
 	public ExecutorService instanceES() {
@@ -579,6 +582,7 @@ public class ClientSocket {
 		}
 		
 	}
+	
 
 	public void createClient(String userEmail, String cipherPassword) {
 		final String email = userEmail;

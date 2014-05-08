@@ -66,7 +66,6 @@
         android:layout_marginRight="12dp"
         android:layout_marginTop="13dp"
         android:background="@drawable/login_btn_background"
-        android:onClick="loginRequest"
         android:text="@string/login"
         android:textColor="#ffffff"
         android:textSize="15dp" />

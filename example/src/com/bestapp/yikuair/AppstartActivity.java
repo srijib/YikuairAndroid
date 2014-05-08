@@ -40,91 +40,6 @@ import android.content.SharedPreferences;
 
 public class AppstartActivity extends Activity {
 
-	private Intent intent = null;
-	private LoginResultBroadcastReceiver lbr;
-	public static AppstartActivity instance = null;
-	private boolean isDownloadPhotoFinished = false;
-	private SharedPreferencesUtil shared;
-	private ClientSocket client;
-	private String userName;
-	private String password;
-	private boolean isEnterLogin = false;
-	private ScheduleResultBroadReceiver sbr = null;
-	private ImageBroadcastReceiver ibr = null;
-
-	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
-	@SuppressLint("NewApi")
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.appstart);
-		instance = AppstartActivity.this;
-		shared = new SharedPreferencesUtil(this);
-		String[] loginStr = shared.getLoginInfo();
-		client = new ClientSocket(this);
-		if (loginStr != null)
-			Log.e("test", "Loginstr.length :" + loginStr.length);
-		if (loginStr != null && loginStr.length == 2 && loginStr[0] != null
-				&& !loginStr[0].isEmpty() && loginStr[1] != null
-				&& !loginStr[1].isEmpty()) {
-			Log.e("test", "back.......................");
-			Log.e("test", "login[0] :" + loginStr[0]);
-			Log.e("test", "login[1] :" + loginStr[1]);
-
-			if (LoginActivity.instance != null)
-				LoginActivity.instance.finish();
-
-			userName = loginStr[0];
-			password = loginStr[1];
-			if (lbr == null) {
-				IntentFilter intentFilter = new IntentFilter();
-				intentFilter.addAction(MessageInfo.LoginResultBroadCast);
-				lbr = new LoginResultBroadcastReceiver();
-				registerReceiver(lbr, intentFilter);
-			}
-			if (sbr == null) {
-				IntentFilter intentFilter3 = new IntentFilter();
-				intentFilter3.addAction(MessageInfo.ScheduleDelResultBroadCast);
-				sbr = new ScheduleResultBroadReceiver();
-				registerReceiver(sbr, intentFilter3);
-			}
-			if (ibr == null) {
-				IntentFilter intentFilter2 = new IntentFilter();
-				intentFilter2.addAction(MessageInfo.ImageBroadcast);
-				ibr = new ImageBroadcastReceiver();
-				registerReceiver(ibr, intentFilter2);
-			}
-
-			registerPushService();
-		} else {
-			if (loginStr != null && loginStr[0] != null) {
-				userName = loginStr[0];
-				UserInfo.id = userName;
-			}
-			Log.e("test", "enter loginactivity");
-			isEnterLogin = true;
-			/*
-			 * AlphaAnimation aa = new AlphaAnimation(1.0f, 1.0f);
-			 * aa.setDuration(4000); layout.startAnimation(aa);
-			 */}
-	}
-
-	public void registerPushService() {
-		PushManager.startWork(this, PushConstants.LOGIN_TYPE_API_KEY,
-				PushUtils.getMetaValue(this, "api_key"));
-		PushSettings.enableDebugMode(this, true);
-	}
-
-	private Handler handler = new Handler() {
-		public void handleMessage(android.os.Message msg) {
-			switch (msg.what) {
-			case 0:
-				startEnterMainActivity();
-				break;
-			}
-		};
-	};
-
 	public class ImageBroadcastReceiver extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -143,7 +58,76 @@ public class AppstartActivity extends Activity {
 			isDownloadPhotoFinished = true;
 		}
 	}
+	class LoginResultBroadcastReceiver extends BroadcastReceiver {
 
+		@Override
+		public void onReceive(Context arg0, Intent arg1) {
+			// TODO Auto-generated method stub
+			Log.i("test", "receive appstart result broadcast");
+			String result = arg1.getStringExtra("result");
+			int resultCode = arg1.getIntExtra("code", 0);
+			int token = arg1.getIntExtra("token", 0);
+			String num = arg1.getStringExtra("num");
+			Log.e("test", "resultCode  :" + resultCode);
+			Log.e("test", "token :" + token);
+			Log.e("test", "result ::" + result);
+			if (resultCode == 200) {
+				if (token == 100) {
+					Log.i("test", "token == 100....................");
+					readDataFromJson(result);
+					Log.e("test", "token 0...........");
+					isFirstLogin();
+					client.sendMessage(null, 0,
+							StringWidthWeightRandom.getNextString(), null,
+							null, null, null, null, null, null, null, false);
+				} else if (token == 200) {
+					Log.e("test", "token == 200....................");
+					client.createClient(userName, password);
+				} else if (token == 0) {
+					Log.e("test", "not first login in ");
+					UserInfo.isRecreateConnection = true;
+					enterMainActivity();
+				} else {
+					Log.e("test", "default.......");
+					enterLoginActivity();
+				}
+			} else if (resultCode == 403) {
+				/*
+				 * Toast.makeText( getApplication(), getApplication().getString(
+				 * R.string.login_safe_exception), Toast.LENGTH_SHORT).show();
+				 */client.socket = null;
+				UserInfo.isSendBroadCast = true;// avoid to not send lonin
+												// broadcast
+				UserInfo.isRecreateConnection = false;
+			} else if (resultCode == 404) {
+				/*
+				 * Toast.makeText( getApplication(), getApplication().getString(
+				 * R.string.login_pram_exception), Toast.LENGTH_SHORT).show();
+				 */
+				client.socket = null;
+			} else if (resultCode == 405) {
+				/*
+				 * Toast.makeText(getApplication(),
+				 * getApplication().getString(R.string.service_error),
+				 * Toast.LENGTH_SHORT).show();
+				 */
+				client.socket = null;
+				intent = new Intent(AppstartActivity.this, LoginActivity.class);
+				startActivity(intent);
+				finish();
+			} else {
+				/*
+				 * Toast.makeText(getApplication(),
+				 * getApplication().getString(R.string.network_error),
+				 * Toast.LENGTH_SHORT).show();
+				 */
+
+				intent = new Intent(AppstartActivity.this, LoginActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		}
+	}
 	public class ScheduleResultBroadReceiver extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -261,90 +245,30 @@ public class AppstartActivity extends Activity {
 			}
 		}
 	}
-
-	class LoginResultBroadcastReceiver extends BroadcastReceiver {
-
-		@Override
-		public void onReceive(Context arg0, Intent arg1) {
-			// TODO Auto-generated method stub
-			Log.i("test", "receive appstart result broadcast");
-			String result = arg1.getStringExtra("result");
-			int resultCode = arg1.getIntExtra("code", 0);
-			int token = arg1.getIntExtra("token", 0);
-			String num = arg1.getStringExtra("num");
-			Log.e("test", "resultCode  :" + resultCode);
-			Log.e("test", "token :" + token);
-			Log.e("test", "result ::" + result);
-			if (resultCode == 200) {
-				if (token == 100) {
-					Log.i("test", "token == 100....................");
-					readDataFromJson(result);
-					Log.e("test", "token 0...........");
-					isFirstLogin();
-					client.sendMessage(null, 0,
-							StringWidthWeightRandom.getNextString(), null,
-							null, null, null, null, null, null, null, false);
-				} else if (token == 200) {
-					Log.e("test", "token == 200....................");
-					client.createClient(userName, password);
-				} else if (token == 0) {
-					Log.e("test", "not first login in ");
-					UserInfo.isRecreateConnection = true;
-					enterMainActivity();
-				} else {
-					Log.e("test", "default.......");
-					enterLoginActivity();
-				}
-			} else if (resultCode == 403) {
-				/*
-				 * Toast.makeText( getApplication(), getApplication().getString(
-				 * R.string.login_safe_exception), Toast.LENGTH_SHORT).show();
-				 */client.socket = null;
-				UserInfo.isSendBroadCast = true;// avoid to not send lonin
-												// broadcast
-				UserInfo.isRecreateConnection = false;
-			} else if (resultCode == 404) {
-				/*
-				 * Toast.makeText( getApplication(), getApplication().getString(
-				 * R.string.login_pram_exception), Toast.LENGTH_SHORT).show();
-				 */
-				client.socket = null;
-			} else if (resultCode == 405) {
-				/*
-				 * Toast.makeText(getApplication(),
-				 * getApplication().getString(R.string.service_error),
-				 * Toast.LENGTH_SHORT).show();
-				 */
-				client.socket = null;
-				intent = new Intent(AppstartActivity.this, LoginActivity.class);
-				startActivity(intent);
-				finish();
-			} else {
-				/*
-				 * Toast.makeText(getApplication(),
-				 * getApplication().getString(R.string.network_error),
-				 * Toast.LENGTH_SHORT).show();
-				 */
-
-				intent = new Intent(AppstartActivity.this, LoginActivity.class);
-				startActivity(intent);
-				finish();
+	public static AppstartActivity instance = null;
+	private ClientSocket client;
+	private Handler handler = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+			switch (msg.what) {
+			case 0:
+				startEnterMainActivity();
+				break;
 			}
-		}
-	}
+		};
+	};
+	private ImageBroadcastReceiver ibr = null;
+	private Intent intent = null;
+	private boolean isDownloadPhotoFinished = false;
+	private boolean isEnterLogin = false;
+	private LoginResultBroadcastReceiver lbr;
 
-	private boolean isFirstLogin() {
-		SharedPreferences setting = getSharedPreferences("yikuair", 0);
-		Boolean user_first = setting.getBoolean("FIRST", true);
-		if (user_first) {
-			setting.edit().putBoolean("FIRST", false).commit();
-			UserInfo.isFirstLogin = true;
-			return true;
-		} else {
-			UserInfo.isFirstLogin = false;
-			return false;
-		}
-	}
+	private String password;
+
+	private ScheduleResultBroadReceiver sbr = null;
+
+	private SharedPreferencesUtil shared;
+
+	private String userName;
 
 	private void enterLoginActivity() {
 		Intent intent = new Intent(this, LoginActivity.class);
@@ -375,17 +299,124 @@ public class AppstartActivity extends Activity {
 		}
 	}
 
-	private void startEnterMainActivity() {
-		UserInfo.isLogin = true;
-		shared.saveUserInfo();
-		shared.savePhotoUrl();
-		Intent intent = new Intent(this, ResponsiveUIActivity.class);
-		if (client.socket == null)
-			Log.e("test", "socket is null.....");
-		else
-			Log.e("test", "socket is not null.......");
-		startActivity(intent);
-		// finish();
+	private boolean isFirstLogin() {
+		SharedPreferences setting = getSharedPreferences("yikuair", 0);
+		Boolean user_first = setting.getBoolean("FIRST", true);
+		if (user_first) {
+			setting.edit().putBoolean("FIRST", false).commit();
+			UserInfo.isFirstLogin = true;
+			return true;
+		} else {
+			UserInfo.isFirstLogin = false;
+			return false;
+		}
+	}
+
+	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
+	@SuppressLint("NewApi")
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.appstart);
+		instance = AppstartActivity.this;
+		shared = new SharedPreferencesUtil(this);
+		String[] loginStr = shared.getLoginInfo();
+		client = new ClientSocket(this);
+		if (loginStr != null)
+			Log.e("test", "Loginstr.length :" + loginStr.length);
+		if (loginStr != null && loginStr.length == 2 && loginStr[0] != null
+				&& !loginStr[0].isEmpty() && loginStr[1] != null
+				&& !loginStr[1].isEmpty()) {
+			Log.e("test", "back.......................");
+			Log.e("test", "login[0] :" + loginStr[0]);
+			Log.e("test", "login[1] :" + loginStr[1]);
+
+			if (LoginActivity.instance != null)
+				LoginActivity.instance.finish();
+
+			userName = loginStr[0];
+			password = loginStr[1];
+			if (lbr == null) {
+				IntentFilter intentFilter = new IntentFilter();
+				intentFilter.addAction(MessageInfo.LoginResultBroadCast);
+				lbr = new LoginResultBroadcastReceiver();
+				registerReceiver(lbr, intentFilter);
+			}
+			if (sbr == null) {
+				IntentFilter intentFilter3 = new IntentFilter();
+				intentFilter3.addAction(MessageInfo.ScheduleDelResultBroadCast);
+				sbr = new ScheduleResultBroadReceiver();
+				registerReceiver(sbr, intentFilter3);
+			}
+			if (ibr == null) {
+				IntentFilter intentFilter2 = new IntentFilter();
+				intentFilter2.addAction(MessageInfo.ImageBroadcast);
+				ibr = new ImageBroadcastReceiver();
+				registerReceiver(ibr, intentFilter2);
+			}
+
+			registerPushService();
+		} else {
+			if (loginStr != null && loginStr[0] != null) {
+				userName = loginStr[0];
+				UserInfo.id = userName;
+			}
+			Log.e("test", "enter loginactivity");
+			isEnterLogin = true;
+			/*
+			 * AlphaAnimation aa = new AlphaAnimation(1.0f, 1.0f);
+			 * aa.setDuration(4000); layout.startAnimation(aa);
+			 */}
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		if (lbr != null) {
+			unregisterReceiver(lbr);
+			lbr = null;
+		}
+		if (sbr != null) {
+			unregisterReceiver(sbr);
+			sbr = null;
+		}
+		if (ibr != null) {
+			unregisterReceiver(ibr);
+			ibr = null;
+		}
+
+		Log.e("test", "appstart onDestroy.....");
+	}
+
+	public void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		new Handler().postDelayed(new Runnable() {
+
+			@Override
+			public void run() {
+				if (isEnterLogin) {
+					intent = new Intent(AppstartActivity.this,
+							LoginActivity.class);
+					if (userName != null) {
+						intent.putExtra("username", userName);
+					}
+					startActivity(intent);
+					finish();
+				}
+			}
+		}, 1500);
 	}
 
 	private void readDataFromJson(String jsonResult) {
@@ -448,54 +479,23 @@ public class AppstartActivity extends Activity {
 		}
 	}
 
-	@Override
-	protected void onStart() {
-		super.onStart();
-		new Handler().postDelayed(new Runnable() {
-
-			@Override
-			public void run() {
-				if (isEnterLogin) {
-					intent = new Intent(AppstartActivity.this,
-							LoginActivity.class);
-					if (userName != null) {
-						intent.putExtra("username", userName);
-					}
-					startActivity(intent);
-					finish();
-				}
-			}
-		}, 1500);
+	public void registerPushService() {
+		PushManager.startWork(this, PushConstants.LOGIN_TYPE_API_KEY,
+				PushUtils.getMetaValue(this, "api_key"));
+//		PushSettings.enableDebugMode(this, true);
 	}
 
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		if (lbr != null) {
-			unregisterReceiver(lbr);
-			lbr = null;
-		}
-		if (sbr != null) {
-			unregisterReceiver(sbr);
-			sbr = null;
-		}
-		if (ibr != null) {
-			unregisterReceiver(ibr);
-			ibr = null;
-		}
-
-		Log.e("test", "appstart onDestroy.....");
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		MobclickAgent.onResume(this);
-	}
-
-	public void onPause() {
-		super.onPause();
-		MobclickAgent.onPause(this);
+	private void startEnterMainActivity() {
+		UserInfo.isLogin = true;
+		shared.saveUserInfo();
+		shared.savePhotoUrl();
+		Intent intent = new Intent(this, ResponsiveUIActivity.class);
+		if (client.socket == null)
+			Log.e("test", "socket is null.....");
+		else
+			Log.e("test", "socket is not null.......");
+		startActivity(intent);
+		// finish();
 	}
 
 }

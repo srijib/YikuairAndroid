@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class SocketConfig {
 	public static int  PORT = 4701; 
-	public static String IPADDRESS = "121.199.9.221";
+	public static String IPADDRESS = "192.168.1.2";
 	public static String WRIETEFLAG="_!@#$%^&*_";
 	public static byte[] WRIETEFLAGBYTES = WRIETEFLAG.getBytes();	
 	public static HashMap<String, String> messageMap = new HashMap<String, String>();

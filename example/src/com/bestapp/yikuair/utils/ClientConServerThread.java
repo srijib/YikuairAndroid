@@ -37,16 +37,17 @@ public class ClientConServerThread extends Thread {
 	private Context mContext;
 	private Socket socket;
 	private InputStream in = null;
-//	private BufferedInputStream buffer=null;
+	// private BufferedInputStream buffer=null;
 	private ClientSocket client;
 	private String receiveString;
-	private CheckNewEdition checkUtil;
+
+	// private CheckNewEdition checkUtil;
 
 	public ClientConServerThread(Context context, Socket socket) {
 		this.mContext = context;
 		this.socket = socket;
 		this.client = new ClientSocket(mContext);
-		this.checkUtil = new CheckNewEdition(mContext);
+		// this.checkUtil = new CheckNewEdition(mContext);
 	}
 
 	@Override
@@ -64,8 +65,8 @@ public class ClientConServerThread extends Thread {
 			byte[] buf = new byte[240000];
 			int len = 0;
 			byte[] arrayByte = null;
-//			buffer = new BufferedInputStream(in);
-			
+			// buffer = new BufferedInputStream(in);
+
 			while ((len = in.read(buf)) != -1) {
 				if (!UserInfo.isHomePressed) {
 					arrayByte = DataUtil.byteArray(arrayByte,
@@ -112,13 +113,13 @@ public class ClientConServerThread extends Thread {
 									DataUtil.subBytes(buf, 0, len));
 							int ablen = arrayByte.length;
 							int flaglen = SocketConfig.WRIETEFLAGBYTES.length;
-							byte[] byteCode = DataUtil.subBytes(arrayByte, ablen
-									- flaglen, flaglen);
+							byte[] byteCode = DataUtil.subBytes(arrayByte,
+									ablen - flaglen, flaglen);
 							boolean isEnd = DataUtil.isBytesEquals(byteCode,
 									SocketConfig.WRIETEFLAGBYTES);
 							if (isEnd) {
-								receiveString = new String(DataUtil.subBytes(arrayByte,
-										0, ablen - flaglen));
+								receiveString = new String(DataUtil.subBytes(
+										arrayByte, 0, ablen - flaglen));
 								arrayByte = null;
 								Log.i("test", "receive message" + receiveString);
 								getJsonArray(receiveString);
@@ -153,7 +154,7 @@ public class ClientConServerThread extends Thread {
 			if (jsonObj.has("token")) {
 				int token = jsonObj.getInt("token");
 				if (token == 0) {
-					checkUtil.checkEdition();
+					// checkUtil.checkEdition();
 					if (jsonObj.has("code")) {
 						int code = jsonObj.getInt("code");
 						if (code == 200) {
@@ -181,12 +182,13 @@ public class ClientConServerThread extends Thread {
 							UserInfo.timer.schedule(new SocketTimer(socket),
 									1000, 230000);
 						} else {
-							Log.e("FM","token not 200");
+							Log.e("FM", "token not 200");
 							closeAllAcitivity();
 							sendLoginResultBroadCast(strResult, code, token);
 						}
 					}
-				} else if (token == 1 || token == 2 || token == 3 || token == 22) {
+				} else if (token == 1 || token == 2 || token == 3
+						|| token == 22) {
 					if (jsonObj.has("content") == false) {
 						return;
 					} else {
@@ -239,63 +241,36 @@ public class ClientConServerThread extends Thread {
 								bigPicUrl, token, status, voiceUrl);
 						entity.setMsguuid(msguuid);// add msguuid;
 						entity.setFullTime(fullTime);// add fulltime to sort
-						if(token == 22){
+						if (token == 22) {
 							String strContent = content;
-							JSONObject jsonContent =  new JSONObject(content);
-							content = jsonContent.getString("location");	
+							JSONObject jsonContent = new JSONObject(content);
+							content = jsonContent.getString("location");
 							tmpLatitude = jsonContent.getDouble("latitude");
 							tmpLongitude = jsonContent.getDouble("longitude");
-							latitude = ""+tmpLatitude;
-							longitude = ""+tmpLongitude;
+							latitude = "" + tmpLatitude;
+							longitude = "" + tmpLongitude;
 							entity.setlongitude(longitude);
 							entity.setlatitude(latitude);
 							entity.setContent(content);
 						}
 
-
-						String fromname;
-						fromname = jsonObj.getString("fromName").trim();
-						DBlog.e("fromane", fromname);
-						if (fromname != null && !"".equals(fromname)) {
-							String getFromname = new String(
-									DataUtil.decodeBase64(fromname)).trim();
-							if (getFromname.startsWith("����ĺ���")) {
-								DBlog.e("I want", jsonObj.toString());
-								entity.setFromname(getFromname.replace(
-										"����ĺ���-", ""));
-								entity.setChatType(MessageInfo.INDIVIDUAL);
-								String tempReceiver = receiver;
-								client.sendMessage(null, 7, msguuid, sender,
-										tempReceiver, null, null, null, null,
-										type, null, false, null);
-								sendMessageBroadcast(entity);
-								return;
-							}
-
-						}
+						// String fromname;
+						// fromname = jsonObj.getString("fromName").trim();
+						// DBlog.e("fromane", fromname);
+						// if (fromname != null && !"".equals(fromname)) {
+						// String getFromname = new String(
+						// DataUtil.decodeBase64(fromname)).trim();
+						//
+						// DBlog.e("I want", jsonObj.toString());
+						// entity.setFromname(getFromname.replace(
+						// "����ĺ���-", ""));
+						entity.setChatType(MessageInfo.INDIVIDUAL);
 						String tempReceiver = receiver;
-						if (Integer.valueOf(type) == 2) {
-							tempReceiver = UserInfo.db_id;
-							entity.setChatType(MessageInfo.GROUP);
-						} else
-							entity.setChatType(MessageInfo.INDIVIDUAL);
-
 						client.sendMessage(null, 7, msguuid, sender,
 								tempReceiver, null, null, null, null, type,
 								null, false, null);
-						client.sendMessage(null, 8, msguuid, sender,
-								tempReceiver, null, null, null, null, type,
-								null, false, null);
-						
-						/*
-						 * client.sendMessage(null, 8, msguuid, sender,
-						 * tempReceiver, null, null, null, null, type, false);
-						 */
-						if (Integer.valueOf(type) == 2
-								&& !MessageInfo.groupMap.containsKey(receiver))
-							createLocalGroup(entity);
-						else
-							sendMessageBroadcast(entity);
+						sendMessageBroadcast(entity);
+						return;
 					}
 				} else if (token == 6) {
 					String msguuid = jsonObj.getString("msguuid");
@@ -359,18 +334,6 @@ public class ClientConServerThread extends Thread {
 					if (Obj.has("signature"))
 						signature = Obj.getString("signature");
 					updateDB(dbId, headUrl, signature);
-				} else if (token == 15) {
-					if (!jsonObj.has("code")) {
-						return;
-					}
-					int code = jsonObj.getInt("code");
-					JSONObject Obj = jsonObj.getJSONObject("data");
-					String msguuid = Obj.getString("msguuid");
-					String group_id = Obj.getString("group_id");
-					String dbId = Obj.getString("from");
-					client.sendMessage(null, 8, msguuid, dbId, UserInfo.db_id,
-							null, null, null, null, null, null, false, null);
-					sendGroupBroadcast(msguuid, code, token, group_id);
 				} else if (token == 100) {
 					if (jsonObj.has("code")) {
 						int code = jsonObj.getInt("code");
@@ -380,7 +343,20 @@ public class ClientConServerThread extends Thread {
 						}
 						sendLoginResultBroadCast(result, code, token);
 					}
-				} else if (token == 13) {
+					
+				} 
+				
+				else if (token == 15) {
+					int code = 200;/*jsonObj.getInt("code");*/
+					JSONObject Obj = jsonObj.getJSONObject("data");
+					String msguuid = Obj.getString("msguuid");
+					String group_id = Obj.getString("group_id");
+//					String dbId = Obj.getString("from");
+					client.sendMessage(null, 8, msguuid, null, UserInfo.db_id,
+							null, null, null, null, null, null, false, null);
+					sendGroupBroadcast(msguuid, code, token, group_id);
+				} 
+				else if (token == 13) {
 					Log.i("test", "token 13.............");
 					String sender = jsonObj.getString("from");
 					String receiver = jsonObj.getString("to");
@@ -461,7 +437,7 @@ public class ClientConServerThread extends Thread {
 							createLocalGroup(entity);
 						else
 							sendScheduleBroadcast(entity);
-							sendMessageBroadcast(entity);
+						sendMessageBroadcast(entity);
 					}
 				} else if (token == 14) {
 					Log.i("test", "token 14......................");
@@ -523,7 +499,7 @@ public class ClientConServerThread extends Thread {
 					if (jsonObj.has("task_id")) {
 						String sender = jsonObj.getString("from");
 						String taskId = jsonObj.getString("task_id");
-//						sendScheduleDelBroadcast(sender, to, taskId, type);
+						// sendScheduleDelBroadcast(sender, to, taskId, type);
 					}
 				}
 			} else {
@@ -664,45 +640,45 @@ public class ClientConServerThread extends Thread {
 		if (MenuFragment.instance == null && MessageFragment.instance == null
 				&& ChatActivity.instance == null) {
 			entity.setIsAdd(true);
-			if (entity.getFromname() != null
-					&& !entity.getFromname().trim().equals("")) {
-				MessageInfo.matchMessageEntityList.add(entity);
-				sendBroadcastToFrind();
-			} else {
+			// if (entity.getFromname() != null
+			// && !entity.getFromname().trim().equals("")) {
+			MessageInfo.matchMessageEntityList.add(entity);
+//			sendBroadcastToFrind();
+			// } else {
 
-				DBlog.e("tadiao", "------messageEntityList");
-				MessageInfo.messageEntityList.add(entity);
-				Intent intent = new Intent();
-				Bundle bundle = new Bundle();
-				bundle.putSerializable("message", entity);
-				intent.setAction(MessageInfo.MessageBroadCastName);
-				intent.putExtras(bundle);
-				// Log.e("test", "conserver send messagebroadcast");
-				mContext.sendBroadcast(intent);
-			}
+			DBlog.e("tadiao", "------messageEntityList");
+			MessageInfo.messageEntityList.add(entity);
+			Intent intent = new Intent();
+			Bundle bundle = new Bundle();
+			bundle.putSerializable("message", entity);
+			intent.setAction(MessageInfo.MessageBroadCastName);
+			intent.putExtras(bundle);
+			// Log.e("test", "conserver send messagebroadcast");
+			mContext.sendBroadcast(intent);
+			// }
 		} else {
-			if (entity.getFromname() != null
-					&& !entity.getFromname().trim().equals("")) {
-				MessageInfo.matchMessageEntityList.add(entity);
-				sendBroadcastToFrind();
-			} else {
-				Intent intent = new Intent();
-				Bundle bundle = new Bundle();
-				bundle.putSerializable("message", entity);
-				intent.setAction(MessageInfo.MessageBroadCastName);
-				intent.putExtras(bundle);
-				// Log.e("test", "conserver send messagebroadcast");
-				mContext.sendBroadcast(intent);
-				Log.e("FM", "" + mContext);
-			}
+			// if (entity.getFromname() != null
+			// && !entity.getFromname().trim().equals("")) {
+			MessageInfo.matchMessageEntityList.add(entity);
+//			sendBroadcastToFrind();
+			// } else {
+			Intent intent = new Intent();
+			Bundle bundle = new Bundle();
+			bundle.putSerializable("message", entity);
+			intent.setAction(MessageInfo.MessageBroadCastName);
+			intent.putExtras(bundle);
+			// Log.e("test", "conserver send messagebroadcast");
+			mContext.sendBroadcast(intent);
+			Log.e("FM", "" + mContext);
+			// }
 		}
 	}
 
-	private void sendBroadcastToFrind() {
-		Intent intent = new Intent();
-		intent.setAction(MessageInfo.FriendMessageBroadCastName);
-		mContext.sendBroadcast(intent);
-	}
+//	private void sendBroadcastToFrind() {
+//		Intent intent = new Intent();
+//		intent.setAction(MessageInfo.FriendMessageBroadCastName);
+//		mContext.sendBroadcast(intent);
+//	}
 
 	private void sendGroupBroadcast(String msguuid, int code, int token,
 			String groupId) {
