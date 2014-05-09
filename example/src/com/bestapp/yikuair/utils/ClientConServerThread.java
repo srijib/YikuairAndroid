@@ -334,6 +334,24 @@ public class ClientConServerThread extends Thread {
 					if (Obj.has("signature"))
 						signature = Obj.getString("signature");
 					updateDB(dbId, headUrl, signature);
+				} else if (token == 15) {
+					int code = 200;
+					if (!jsonObj.has("code")) {
+						String group_id = jsonObj.getString("from");
+						String msguuid = jsonObj.getString("msguuid");
+
+						sendGroupBroadcast(msguuid, code, token, group_id);
+					} else {
+						JSONObject Obj = jsonObj.getJSONObject("data");
+						String msguuid = Obj.getString("msguuid");
+						String group_id = Obj.getString("group_id");
+//						String dbId = jsonObj.getString("from");
+//						client.sendMessage(null, 8, msguuid, group_id, UserInfo.db_id,
+//								null, null, null, null, null, null, false, null);
+						sendGroupBroadcast(msguuid, code, token, group_id);
+					}
+
+					
 				} else if (token == 100) {
 					if (jsonObj.has("code")) {
 						int code = jsonObj.getInt("code");
@@ -343,20 +361,7 @@ public class ClientConServerThread extends Thread {
 						}
 						sendLoginResultBroadCast(result, code, token);
 					}
-					
-				} 
-				
-				else if (token == 15) {
-					int code = 200;/*jsonObj.getInt("code");*/
-					JSONObject Obj = jsonObj.getJSONObject("data");
-					String msguuid = Obj.getString("msguuid");
-					String group_id = Obj.getString("group_id");
-//					String dbId = Obj.getString("from");
-					client.sendMessage(null, 8, msguuid, null, UserInfo.db_id,
-							null, null, null, null, null, null, false, null);
-					sendGroupBroadcast(msguuid, code, token, group_id);
-				} 
-				else if (token == 13) {
+				} else if (token == 13) {
 					Log.i("test", "token 13.............");
 					String sender = jsonObj.getString("from");
 					String receiver = jsonObj.getString("to");
