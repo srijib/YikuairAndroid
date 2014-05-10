@@ -567,9 +567,9 @@ public class MessageFragment extends Fragment {
 			if (data != null) {
 				entity = (ChatMsgEntity) data;
 
-//				if (entity.getType() == 4) {
-//					return;
-//				}
+				if (entity.getType() == 4) {
+					return;
+				}
 				Log.i("test", "getchatType :" + entity.getChatType());
 				if (entity.getFromname() != null
 						&& !entity.getFromname().equals("")) {

@@ -254,21 +254,28 @@ public class ClientConServerThread extends Thread {
 							entity.setContent(content);
 						}
 
-						// String fromname;
-						// fromname = jsonObj.getString("fromName").trim();
-						// DBlog.e("fromane", fromname);
-						// if (fromname != null && !"".equals(fromname)) {
-						// String getFromname = new String(
-						// DataUtil.decodeBase64(fromname)).trim();
-						//
-						// DBlog.e("I want", jsonObj.toString());
-						// entity.setFromname(getFromname.replace(
-						// "����ĺ���-", ""));
+						String fromname;
+						fromname = jsonObj.getString("fromName").trim();
+						DBlog.e("fromane", fromname);
+						if (fromname != null && !"".equals(fromname)) {
+							String getFromname = new String(
+									DataUtil.decodeBase64(fromname)).trim();
+
+							DBlog.e("I want", jsonObj.toString());
+							entity.setFromname(getFromname.replace("����ĺ���-",
+									""));
+						}
 						entity.setChatType(MessageInfo.INDIVIDUAL);
+						if (type.equals("2")) {
+							entity.setChatType(MessageInfo.GROUP);
+							createLocalGroup(entity);
+						}
+
 						String tempReceiver = receiver;
 						client.sendMessage(null, 7, msguuid, sender,
 								tempReceiver, null, null, null, null, type,
 								null, false, null);
+
 						sendMessageBroadcast(entity);
 						return;
 					}
@@ -345,13 +352,13 @@ public class ClientConServerThread extends Thread {
 						JSONObject Obj = jsonObj.getJSONObject("data");
 						String msguuid = Obj.getString("msguuid");
 						String group_id = Obj.getString("group_id");
-//						String dbId = jsonObj.getString("from");
-//						client.sendMessage(null, 8, msguuid, group_id, UserInfo.db_id,
-//								null, null, null, null, null, null, false, null);
+						// String dbId = jsonObj.getString("from");
+						// client.sendMessage(null, 8, msguuid, group_id,
+						// UserInfo.db_id,
+						// null, null, null, null, null, null, false, null);
 						sendGroupBroadcast(msguuid, code, token, group_id);
 					}
 
-					
 				} else if (token == 100) {
 					if (jsonObj.has("code")) {
 						int code = jsonObj.getInt("code");
@@ -438,7 +445,7 @@ public class ClientConServerThread extends Thread {
 						 * String.valueOf(type), false);
 						 */
 						if (type == 2
-								&& !MessageInfo.groupMap.containsKey(receiver))
+						/* && !MessageInfo.groupMap.containsKey(receiver) */)
 							createLocalGroup(entity);
 						else
 							sendScheduleBroadcast(entity);
@@ -648,7 +655,7 @@ public class ClientConServerThread extends Thread {
 			// if (entity.getFromname() != null
 			// && !entity.getFromname().trim().equals("")) {
 			MessageInfo.matchMessageEntityList.add(entity);
-//			sendBroadcastToFrind();
+			// sendBroadcastToFrind();
 			// } else {
 
 			DBlog.e("tadiao", "------messageEntityList");
@@ -665,7 +672,7 @@ public class ClientConServerThread extends Thread {
 			// if (entity.getFromname() != null
 			// && !entity.getFromname().trim().equals("")) {
 			MessageInfo.matchMessageEntityList.add(entity);
-//			sendBroadcastToFrind();
+			// sendBroadcastToFrind();
 			// } else {
 			Intent intent = new Intent();
 			Bundle bundle = new Bundle();
@@ -679,11 +686,11 @@ public class ClientConServerThread extends Thread {
 		}
 	}
 
-//	private void sendBroadcastToFrind() {
-//		Intent intent = new Intent();
-//		intent.setAction(MessageInfo.FriendMessageBroadCastName);
-//		mContext.sendBroadcast(intent);
-//	}
+	// private void sendBroadcastToFrind() {
+	// Intent intent = new Intent();
+	// intent.setAction(MessageInfo.FriendMessageBroadCastName);
+	// mContext.sendBroadcast(intent);
+	// }
 
 	private void sendGroupBroadcast(String msguuid, int code, int token,
 			String groupId) {
